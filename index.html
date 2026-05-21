@@ -17,6 +17,7 @@
   --red:#ff2a2a;
 }
 
+/* BODY */
 body {
   margin:0;
   background:
@@ -26,7 +27,7 @@ body {
   cursor:none;
 }
 
-/* GRID BACKGROUND */
+/* GRID BACKGROUND (POJACAN) */
 .grid-bg {
   position:fixed;
   width:100%;
@@ -47,6 +48,7 @@ body {
   to {background-position:60px 60px;}
 }
 
+/* CURSOR */
 .cursor {
   width:18px;
   height:18px;
@@ -64,6 +66,7 @@ body {
   height:60px;
 }
 
+/* HEADER */
 .header {
   position:sticky;
   top:0;
@@ -73,6 +76,7 @@ body {
   padding:18px 40px;
   background:rgba(0,0,0,0.55);
   backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo {
@@ -87,6 +91,7 @@ body {
   text-decoration:none;
 }
 
+/* HERO */
 .hero {
   text-align:center;
   padding:90px 20px 70px;
@@ -103,15 +108,17 @@ body {
   max-width:650px;
 }
 
+/* CTA */
 .cta {
   padding:18px 60px;
-  background:var(--gold);
+  background:linear-gradient(135deg, var(--gold), #e0c08a);
   color:black;
   border-radius:12px;
   text-decoration:none;
   display:inline-block;
 }
 
+/* SECTION */
 .section {
   padding:70px 20px;
   text-align:center;
@@ -122,6 +129,7 @@ body {
   font-size:60px;
 }
 
+/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -130,6 +138,7 @@ body {
   margin:30px auto;
 }
 
+/* CARD */
 .card {
   background:rgba(245,245,245,0.06);
   color:white;
@@ -138,6 +147,7 @@ body {
   border:1px solid rgba(255,255,255,0.10);
   position:relative;
   overflow:hidden;
+  transition:0.25s ease;
   backdrop-filter:blur(10px);
 }
 
@@ -146,11 +156,54 @@ body {
   border-color:rgba(198,164,108,0.4);
 }
 
+/* INTERACTION */
+.card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    500px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,42,42,0.20),
+    transparent 40%
+  );
+  opacity:0;
+  transition:0.25s;
+}
+
+.special .card.active::before {
+  opacity:1;
+}
+
+/* NUMBER */
+.number {
+  position:absolute;
+  top:-30px;
+  right:10px;
+  font-size:150px;
+  color:rgba(255,42,42,0.20);
+  font-family:'Bebas Neue';
+}
+
+/* SOLUTION */
+.solution {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  max-width:1000px;
+  margin:auto;
+  font-size:20px;
+}
+
+/* FLOW */
 .flow {
   font-size:26px;
   color:var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
+/* CTA BLOCK */
 .cta-block {
   background:var(--gold);
   color:black;
@@ -158,9 +211,9 @@ body {
   text-align:center;
 }
 
-/* =========================
-   ONLY FORM FIX (UNIFORM)
-========================= */
+/* ===================== */
+/* FORM - ONLY FIX (UNIFORM PREMIUM UI) */
+/* ===================== */
 
 #mlb2-41605663 {
   max-width:520px;
@@ -173,47 +226,52 @@ body {
   gap:12px;
 }
 
-/* FORCE EQUAL SIZE */
+/* FORCE UNIFORM WIDTH + HEIGHT */
 #mlb2-41605663 input,
 #mlb2-41605663 select,
 #mlb2-41605663 button {
   width:100%;
-  height:56px;
-  border-radius:12px;
   box-sizing:border-box;
-  font-size:14px;
 }
 
 /* INPUT + SELECT */
 #mlb2-41605663 input,
 #mlb2-41605663 select {
+  height:54px;
   padding:0 16px;
+  border-radius:12px;
   border:1px solid rgba(255,255,255,0.25);
-  background:rgba(255,255,255,0.95);
+  background:rgba(255,255,255,0.92);
   color:#111;
+  font-size:14px;
   outline:none;
 }
 
-/* BUTTON */
+/* BUTTON MATCH HEIGHT */
 #mlb2-41605663 button {
-  border:none;
-  background:linear-gradient(135deg, #111, #2a2a2a);
+  height:54px;
+  background:linear-gradient(135deg, var(--black), #2a2a2a);
   color:white;
+  border:none;
+  border-radius:12px;
   font-weight:700;
   cursor:pointer;
-  transition:0.2s ease;
+  transition:0.2s;
 }
 
 #mlb2-41605663 button:hover {
   transform:translateY(-2px);
+  background:linear-gradient(135deg, #1a1a1a, #3a3a3a);
 }
 
+/* FOOTER */
 .footer {
   text-align:center;
   padding:30px;
   opacity:0.7;
 }
 
+/* MOBILE */
 @media(max-width:768px){
   .hero h1 {font-size:60px;}
   .section h2 {font-size:40px;}
@@ -252,17 +310,39 @@ body {
 
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
-  <div class="flow">Card → Landing → Form → Email → Client</div>
+  <div class="solution">
+    <div>Instead of one generic website, you get structured landing pages per offer, with full conversion flow and automation.</div>
+    <div class="flow">Card → Landing → Form → Email → Client</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>WHAT YOU GET</h2>
+  <div class="grid">
+    <div class="card">Landing Pages</div>
+    <div class="card">Portal (Index)</div>
+    <div class="card">Email Automation</div>
+    <div class="card">Mobile UX</div>
+    <div class="card">Conversion Flow</div>
+    <div class="card">Custom Design</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>REAL USE CASES</h2>
+  <div class="grid special">
+    <div class="card" onclick="window.location.href='doberman.html'">Dog Breeders (Doberman)</div>
+    <div class="card">Service Businesses</div>
+    <div class="card">Digital Products</div>
+  </div>
 </section>
 
 <section class="cta-block">
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
   <p>Enter your email and get access to your custom system setup.</p>
 
-  <!-- ONLY FORM CHANGED -->
   <div id="mlb2-41605663">
     <form>
-
       <input type="email" placeholder="Your email" required>
       <select required>
         <option value="">Select package</option>
@@ -270,12 +350,9 @@ body {
         <option>Portal + Landing System</option>
         <option>Full Funnel System</option>
       </select>
-
       <button type="submit">START NOW</button>
-
     </form>
   </div>
-
 </section>
 
 <div class="footer">
@@ -289,6 +366,17 @@ const cursor = document.querySelector('.cursor');
 document.addEventListener('mousemove', e=>{
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('.special .card').forEach(card=>{
+  card.addEventListener('mouseenter', ()=>card.classList.add('active'));
+  card.addEventListener('mouseleave', ()=>card.classList.remove('active'));
+
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--x', ((e.clientX-r.left)/r.width)*100+'%');
+    card.style.setProperty('--y', ((e.clientY-r.top)/r.height)*100+'%');
+  });
 });
 </script>
 
