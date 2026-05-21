@@ -27,7 +27,7 @@ body {
   cursor:none;
 }
 
-/* GRID BACKGROUND (POJACAN) */
+/* GRID BACKGROUND */
 .grid-bg {
   position:fixed;
   width:100%;
@@ -211,10 +211,7 @@ body {
   text-align:center;
 }
 
-/* ===================== */
-/* FORM - ONLY FIX (UNIFORM PREMIUM UI) */
-/* ===================== */
-
+/* FORM */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -226,17 +223,9 @@ body {
   gap:12px;
 }
 
-/* FORCE UNIFORM WIDTH + HEIGHT */
-#mlb2-41605663 input,
-#mlb2-41605663 select,
-#mlb2-41605663 button {
-  width:100%;
-  box-sizing:border-box;
-}
-
-/* INPUT + SELECT */
 #mlb2-41605663 input,
 #mlb2-41605663 select {
+  width:100%;
   height:54px;
   padding:0 16px;
   border-radius:12px;
@@ -244,11 +233,10 @@ body {
   background:rgba(255,255,255,0.92);
   color:#111;
   font-size:14px;
-  outline:none;
 }
 
-/* BUTTON MATCH HEIGHT */
 #mlb2-41605663 button {
+  width:100%;
   height:54px;
   background:linear-gradient(135deg, var(--black), #2a2a2a);
   color:white;
@@ -256,12 +244,6 @@ body {
   border-radius:12px;
   font-weight:700;
   cursor:pointer;
-  transition:0.2s;
-}
-
-#mlb2-41605663 button:hover {
-  transform:translateY(-2px);
-  background:linear-gradient(135deg, #1a1a1a, #3a3a3a);
 }
 
 /* FOOTER */
@@ -286,6 +268,7 @@ body {
 <div class="grid-bg"></div>
 <div class="cursor"></div>
 
+<!-- HEADER -->
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
@@ -293,12 +276,14 @@ body {
   </div>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
   <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
 </section>
 
+<!-- PROBLEM -->
 <section class="section">
   <h2>WHY MOST WEBSITES DON'T BRING CLIENTS</h2>
   <div class="grid">
@@ -308,14 +293,19 @@ body {
   </div>
 </section>
 
+<!-- SOLUTION -->
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
   <div class="solution">
-    <div>Instead of one generic website, you get structured landing pages per offer, with full conversion flow and automation.</div>
+    <div>
+      Instead of one generic website, you get structured landing pages per offer,
+      with full conversion flow and automation.
+    </div>
     <div class="flow">Card → Landing → Form → Email → Client</div>
   </div>
 </section>
 
+<!-- MODULES -->
 <section class="section">
   <h2>WHAT YOU GET</h2>
   <div class="grid">
@@ -328,21 +318,57 @@ body {
   </div>
 </section>
 
+<!-- USE CASE -->
 <section class="section">
   <h2>REAL USE CASES</h2>
   <div class="grid special">
-    <div class="card" onclick="window.location.href='doberman.html'">Dog Breeders (Doberman)</div>
+
+    <a class="card" href="doberman.html" style="text-decoration:none;color:inherit;">
+      Dog Breeders (Doberman)
+    </a>
+
     <div class="card">Service Businesses</div>
     <div class="card">Digital Products</div>
   </div>
 </section>
 
+<!-- PACKAGES -->
+<section class="section">
+  <h2>SYSTEM PACKAGES</h2>
+  <div class="grid special">
+
+    <div class="card">
+      <div class="number">01</div>
+      <h3>Landing System</h3>
+      <p>1–3 landing pages with conversion structure</p>
+      <p><strong>€150–€400</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="number">02</div>
+      <h3>Portal + Landing System</h3>
+      <p>Multi-page structured system</p>
+      <p><strong>€300–€800</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="number">03</div>
+      <h3>Full Funnel System</h3>
+      <p>Landing + email automation + follow-up</p>
+      <p><strong>€500–€1200</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA + FORM -->
 <section class="cta-block">
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
   <p>Enter your email and get access to your custom system setup.</p>
 
   <div id="mlb2-41605663">
     <form>
+
       <input type="email" placeholder="Your email" required>
       <select required>
         <option value="">Select package</option>
@@ -350,11 +376,14 @@ body {
         <option>Portal + Landing System</option>
         <option>Full Funnel System</option>
       </select>
+
       <button type="submit">START NOW</button>
+
     </form>
   </div>
 </section>
 
+<!-- FOOTER -->
 <div class="footer">
   <p><strong>Design builds dominance.</strong></p>
   <p>2019–2026 Lionsign Research and Design. All rights reserved.</p>
