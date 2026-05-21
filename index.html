@@ -27,7 +27,7 @@ body {
   cursor:none;
 }
 
-/* GRID (ENHANCED SLIGHTLY, NOT OVERDONE) */
+/* GRID (slightly stronger, no layout change) */
 .grid-bg {
   position:fixed;
   width:100%;
@@ -35,8 +35,8 @@ body {
   z-index:-1;
 
   background:
-    linear-gradient(rgba(198,164,108,0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(198,164,108,0.16) 1px, transparent 1px);
+    linear-gradient(rgba(198,164,108,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,164,108,0.18) 1px, transparent 1px);
 
   background-size:60px 60px;
   opacity:0.35;
@@ -110,16 +110,6 @@ body {
   opacity:0.85;
 }
 
-/* GOLD HIGHLIGHT RESTORED */
-.flow {
-  font-size:26px;
-  color:var(--gold);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:500;
-}
-
 /* CTA */
 .cta {
   padding:18px 60px;
@@ -177,6 +167,17 @@ body {
   font-family:'Bebas Neue';
 }
 
+/* FLOW — ZLATNO VRACENO */
+.flow {
+  font-size:26px;
+  color:var(--gold);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:500;
+  margin-top:10px;
+}
+
 /* CTA BLOCK */
 .cta-block {
   background:rgba(198,164,108,0.95);
@@ -185,26 +186,22 @@ body {
   text-align:center;
 }
 
-/* FORM WRAPPER (IMPROVED UX) */
+/* FORM — CLEAN + UNIFORM */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
 }
 
-/* GLASS FORM PANEL */
 #mlb2-41605663 .ml-form-embedWrapper {
   background:rgba(0,0,0,0.25);
-  border:1px solid rgba(0,0,0,0.15);
   border-radius:18px;
   padding:28px;
-  backdrop-filter:blur(12px);
-
   display:flex;
   flex-direction:column;
   gap:12px;
 }
 
-/* UNIFORM FIELDS */
+/* uniform fields */
 #mlb2-41605663 input,
 #mlb2-41605663 select {
   width:100%;
@@ -216,10 +213,9 @@ body {
   color:#111;
   font-size:14px;
   box-sizing:border-box;
-  outline:none;
 }
 
-/* BUTTON PREMIUM */
+/* button FIXED + interactive */
 #mlb2-41605663 button {
   width:100%;
   padding:14px;
@@ -229,7 +225,7 @@ body {
   border-radius:12px;
   font-weight:700;
   cursor:pointer;
-  transition:0.2s;
+  transition:0.2s ease;
 }
 
 #mlb2-41605663 button:hover {
@@ -315,7 +311,6 @@ body {
   <p>Enter your email and get access to your custom system setup.</p>
 
   <div id="mlb2-41605663">
-
     <div class="ml-form-embedWrapper">
 
       <form class="ml-block-form"
