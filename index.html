@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root {
   --black:#0b0b0b;
   --gray:#f5f5f5;
@@ -17,11 +16,9 @@
   --red:#ff2a2a;
 }
 
-/* BODY */
 body {
   margin:0;
-  background:
-    radial-gradient(circle at top, #151515, #0b0b0b 60%);
+  background:var(--black);
   color:white;
   font-family:'Oswald',sans-serif;
   cursor:none;
@@ -35,11 +32,10 @@ body {
   z-index:-1;
 
   background:
-    linear-gradient(rgba(198,164,108,0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(198,164,108,0.18) 1px, transparent 1px);
+    linear-gradient(rgba(198,164,108,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,164,108,0.12) 1px, transparent 1px);
 
   background-size:60px 60px;
-  opacity:0.35;
   animation:gridMove 25s linear infinite;
 }
 
@@ -74,15 +70,13 @@ body {
   display:flex;
   justify-content:space-between;
   padding:18px 40px;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,0.08);
+  background:var(--gold);
 }
 
 .logo {
   font-family:'Bebas Neue';
   font-size:36px;
-  color:white;
+  color:black;
 }
 
 .contact a {
@@ -108,10 +102,9 @@ body {
   max-width:650px;
 }
 
-/* CTA */
 .cta {
   padding:18px 60px;
-  background:linear-gradient(135deg, var(--gold), #e0c08a);
+  background:var(--gold);
   color:black;
   border-radius:12px;
   text-decoration:none;
@@ -140,20 +133,13 @@ body {
 
 /* CARD */
 .card {
-  background:rgba(245,245,245,0.06);
-  color:white;
+  background:var(--gray);
+  color:black;
   padding:20px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.10);
+  border-radius:18px;
   position:relative;
   overflow:hidden;
   transition:0.25s ease;
-  backdrop-filter:blur(10px);
-}
-
-.card:hover {
-  transform:translateY(-6px);
-  border-color:rgba(198,164,108,0.4);
 }
 
 /* INTERACTION */
@@ -162,15 +148,16 @@ body {
   position:absolute;
   inset:0;
   background:radial-gradient(
-    500px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255,42,42,0.20),
+    600px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,42,42,0.25),
     transparent 40%
   );
   opacity:0;
-  transition:0.25s;
+  transition:opacity 0.25s ease;
+  pointer-events:none;
 }
 
-.special .card.active::before {
+.card.active::before {
   opacity:1;
 }
 
@@ -180,7 +167,7 @@ body {
   top:-30px;
   right:10px;
   font-size:150px;
-  color:rgba(255,42,42,0.20);
+  color:rgba(255,42,42,0.25);
   font-family:'Bebas Neue';
 }
 
@@ -194,7 +181,6 @@ body {
   font-size:20px;
 }
 
-/* FLOW */
 .flow {
   font-size:26px;
   color:var(--gold);
@@ -211,41 +197,6 @@ body {
   text-align:center;
 }
 
-/* FORM */
-#mlb2-41605663 {
-  max-width:520px;
-  margin:30px auto 0;
-}
-
-#mlb2-41605663 form {
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-#mlb2-41605663 input,
-#mlb2-41605663 select {
-  width:100%;
-  height:54px;
-  padding:0 16px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.25);
-  background:rgba(255,255,255,0.92);
-  color:#111;
-  font-size:14px;
-}
-
-#mlb2-41605663 button {
-  width:100%;
-  height:54px;
-  background:linear-gradient(135deg, var(--black), #2a2a2a);
-  color:white;
-  border:none;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-}
-
 /* FOOTER */
 .footer {
   text-align:center;
@@ -253,13 +204,11 @@ body {
   opacity:0.7;
 }
 
-/* MOBILE */
 @media(max-width:768px){
   .hero h1 {font-size:60px;}
   .section h2 {font-size:40px;}
   .grid {grid-template-columns:1fr;}
 }
-
 </style>
 </head>
 
@@ -279,7 +228,7 @@ body {
 <!-- HERO -->
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
-  <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
+  <p>A modular system where every offer has its own landing page.</p>
   <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
 </section>
 
@@ -297,10 +246,7 @@ body {
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
   <div class="solution">
-    <div>
-      Instead of one generic website, you get structured landing pages per offer,
-      with full conversion flow and automation.
-    </div>
+    <div>Each offer has its own landing page and conversion flow.</div>
     <div class="flow">Card → Landing → Form → Email → Client</div>
   </div>
 </section>
@@ -323,8 +269,8 @@ body {
   <h2>REAL USE CASES</h2>
   <div class="grid special">
 
-    <!-- ONLY CHANGE: LINKED CORRECTLY -->
-    <a href="doberman.html" class="card" style="text-decoration:none;color:inherit;">
+    <!-- FIXED LINK ONLY HERE -->
+    <a class="card" href="doberman.html" style="text-decoration:none;color:inherit;">
       Dog Breeders (Doberman)
     </a>
 
@@ -333,50 +279,39 @@ body {
   </div>
 </section>
 
-<!-- CTA + FORM -->
+<!-- CTA -->
 <section class="cta-block">
-  <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
-  <p>Enter your email and get access to your custom system setup.</p>
-
-  <div id="mlb2-41605663">
-    <form>
-
-      <input type="email" placeholder="Your email" required>
-      <select required>
-        <option value="">Select package</option>
-        <option>Landing System</option>
-        <option>Portal + Landing System</option>
-        <option>Full Funnel System</option>
-      </select>
-
-      <button type="submit">START NOW</button>
-
-    </form>
-  </div>
+  <h2>BUILD YOUR CLIENT SYSTEM</h2>
+  <input type="email" placeholder="Email">
+  <button>START NOW</button>
 </section>
-
-<!-- FOOTER -->
-<div class="footer">
-  <p><strong>Design builds dominance.</strong></p>
-  <p>2019–2026 Lionsign Research and Design. All rights reserved.</p>
-</div>
 
 <script>
 const cursor = document.querySelector('.cursor');
 
-document.addEventListener('mousemove', e=>{
+document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
 
-document.querySelectorAll('.special .card').forEach(card=>{
-  card.addEventListener('mouseenter', ()=>card.classList.add('active'));
-  card.addEventListener('mouseleave', ()=>card.classList.remove('active'));
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    cursor.classList.add('grow');
+    card.classList.add('active');
+  });
 
-  card.addEventListener('mousemove', e=>{
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--x', ((e.clientX-r.left)/r.width)*100+'%');
-    card.style.setProperty('--y', ((e.clientY-r.top)/r.height)*100+'%');
+  card.addEventListener('mouseleave', () => {
+    cursor.classList.remove('grow');
+    card.classList.remove('active');
+  });
+
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    card.style.setProperty('--x', x + '%');
+    card.style.setProperty('--y', y + '%');
   });
 });
 </script>
