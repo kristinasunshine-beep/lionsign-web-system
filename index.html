@@ -142,7 +142,7 @@ body {
   cursor:pointer;
 }
 
-/* INTERACTIVE ONLY SPECIAL */
+/* INTERACTIVE */
 .card::before {
   content:"";
   position:absolute;
@@ -197,7 +197,7 @@ body {
   text-align:center;
 }
 
-/* MAILER LITE FORM LUX FIX */
+/* FORM */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -211,7 +211,6 @@ body {
   backdrop-filter:blur(10px);
 }
 
-/* UNIFORM INPUTS */
 #mlb2-41605663 input,
 #mlb2-41605663 select {
   width:100%;
@@ -227,25 +226,8 @@ body {
 
   font-size:14px;
   box-sizing:border-box;
-  outline:none;
 }
 
-/* SELECT ARROW */
-#mlb2-41605663 select {
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23111' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 14px center;
-}
-
-/* FOCUS STATE */
-#mlb2-41605663 input:focus,
-#mlb2-41605663 select:focus {
-  border:1px solid var(--gold);
-  box-shadow:0 0 0 3px rgba(198,164,108,0.25);
-}
-
-/* BUTTON */
 #mlb2-41605663 button {
   width:100%;
   padding:14px;
@@ -254,11 +236,6 @@ body {
   border-radius:12px;
   font-weight:700;
   cursor:pointer;
-}
-
-/* HIDE LABELS */
-#mlb2-41605663 label {
-  display:none !important;
 }
 
 /* FOOTER */
@@ -282,7 +259,6 @@ body {
 <div class="grid-bg"></div>
 <div class="cursor"></div>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
@@ -290,14 +266,12 @@ body {
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
   <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
 </section>
 
-<!-- PROBLEM -->
 <section class="section">
   <h2>WHY MOST WEBSITES DON'T BRING CLIENTS</h2>
   <div class="grid">
@@ -307,7 +281,6 @@ body {
   </div>
 </section>
 
-<!-- SOLUTION -->
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
   <div class="solution">
@@ -319,7 +292,6 @@ body {
   </div>
 </section>
 
-<!-- MODULES -->
 <section class="section">
   <h2>WHAT YOU GET</h2>
   <div class="grid">
@@ -332,12 +304,11 @@ body {
   </div>
 </section>
 
-<!-- USE CASE -->
 <section class="section">
   <h2>REAL USE CASES</h2>
   <div class="grid special">
 
-    <!-- ONLY CHANGE: LINKED CARD -->
+    <!-- ONLY CHANGE: LINK -->
     <div class="card" onclick="window.location.href='doberman.html'">
       Dog Breeders (Doberman)
     </div>
@@ -347,7 +318,6 @@ body {
   </div>
 </section>
 
-<!-- PACKAGES -->
 <section class="section">
   <h2>SYSTEM PACKAGES</h2>
   <div class="grid special">
@@ -376,43 +346,14 @@ body {
   </div>
 </section>
 
-<!-- CTA + FORM -->
 <section class="cta-block">
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
-  <p>Enter your email and get access to your custom system setup.</p>
 
-  <div id="mlb2-41605663" class="ml-form-embedContainer ml-subscribe-form">
-
-    <div class="ml-form-embedWrapper embedForm">
-
-      <form class="ml-block-form"
-        action="https://assets.mailerlite.com/jsonp/2126552/forms/188080892718089339/subscribe"
-        method="post"
-        target="_blank">
-
-        <input type="email" name="fields[email]" placeholder="Your email" required>
-        <select name="fields[system_packages]" required>
-          <option value="">Select package</option>
-          <option>Landing System</option>
-          <option>Portal + Landing System</option>
-          <option>Full Funnel System</option>
-        </select>
-
-        <button type="submit">START NOW</button>
-
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
-
-      </form>
-
-    </div>
-  </div>
+  <div id="mlb2-41605663"></div>
 </section>
 
-<!-- FOOTER -->
 <div class="footer">
   <p><strong>Design builds dominance.</strong></p>
-  <p>2019–2026 Lionsign Research and Design. All rights reserved.</p>
 </div>
 
 <script>
