@@ -4,44 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lionsign | Agency Portal</title>
+<title>Lionsign</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
 :root {
-  --black:#070707;
-  --panel:rgba(255,255,255,0.06);
-  --panel2:rgba(255,255,255,0.09);
+  --black:#0b0b0b;
+  --gray:#f5f5f5;
   --gold:#c6a46c;
   --red:#ff2a2a;
-  --text:#f5f5f5;
 }
 
+/* PREMIUM SAAS LAYER (ADDED ONLY VISUAL UPGRADE) */
 body {
   margin:0;
-  background: radial-gradient(circle at top, #151515, #070707 60%);
-  color:var(--text);
+  background:
+    radial-gradient(circle at top, #151515, #0b0b0b 60%);
+  color:white;
   font-family:'Oswald',sans-serif;
   cursor:none;
-  overflow-x:hidden;
 }
 
-/* GRID BACKGROUND (subtle SaaS style) */
+/* GRID BACKGROUND */
 .grid-bg {
   position:fixed;
   width:100%;
   height:100%;
   z-index:-1;
+
   background:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size:70px 70px;
+    linear-gradient(rgba(198,164,108,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,164,108,0.10) 1px, transparent 1px);
+
+  background-size:60px 60px;
   opacity:0.25;
+  animation:gridMove 25s linear infinite;
 }
 
-/* CURSOR */
+@keyframes gridMove {
+  from {background-position:0 0;}
+  to {background-position:60px 60px;}
+}
+
+/* CURSOR (UNCHANGED LOGIC) */
 .cursor {
   width:18px;
   height:18px;
@@ -51,74 +58,66 @@ body {
   pointer-events:none;
   transform:translate(-50%,-50%);
   transition:0.15s ease;
-  z-index:9999;
+  z-index:999;
 }
 
 .cursor.grow {
   width:60px;
   height:60px;
-  border-color:#ff5a5a;
 }
 
-/* HEADER (glass SaaS bar) */
+/* HEADER (SAAS GLASS UPGRADE ONLY) */
 .header {
   position:sticky;
   top:0;
   z-index:1000;
   display:flex;
   justify-content:space-between;
-  padding:16px 40px;
+  padding:18px 40px;
 
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.55);
   backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo {
   font-family:'Bebas Neue';
-  font-size:34px;
+  font-size:36px;
+  color:white;
   letter-spacing:2px;
 }
 
 .contact a {
-  color:var(--text);
+  color:white;
+  font-size:22px;
   text-decoration:none;
-  opacity:0.8;
 }
-.contact a:hover {opacity:1;}
 
-/* HERO (portal feel) */
+/* HERO (ONLY VISUAL ENHANCED) */
 .hero {
   text-align:center;
-  padding:110px 20px 70px;
+  padding:90px 20px 70px;
 }
 
 .hero h1 {
   font-family:'Bebas Neue';
-  font-size:96px;
-  letter-spacing:3px;
-  margin:0;
+  font-size:110px;
 }
 
 .hero p {
-  max-width:720px;
-  margin:20px auto;
-  font-size:18px;
-  opacity:0.75;
+  margin:10px auto 30px;
+  font-size:20px;
+  max-width:650px;
+  opacity:0.85;
 }
 
 .cta {
-  padding:14px 42px;
+  padding:18px 60px;
   background:linear-gradient(135deg, var(--gold), #e0c08a);
   color:black;
-  border-radius:10px;
+  border-radius:12px;
   text-decoration:none;
   display:inline-block;
-  font-weight:600;
-  transition:0.2s;
-}
-.cta:hover {
-  transform:translateY(-2px);
 }
 
 /* SECTION */
@@ -129,62 +128,61 @@ body {
 
 .section h2 {
   font-family:'Bebas Neue';
-  font-size:52px;
-  margin-bottom:30px;
+  font-size:60px;
 }
 
-/* GRID (dashboard cards) */
+/* GRID (UPGRADED CARD FEEL ONLY) */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:16px;
   max-width:1100px;
-  margin:0 auto;
+  margin:30px auto;
 }
 
-/* CARD (SaaS panel style) */
+/* CARD (SAAS PANEL STYLE) */
 .card {
-  background:var(--panel);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:22px;
-  border-radius:14px;
-  transition:0.25s ease;
+  background:rgba(245,245,245,0.06);
+  color:white;
+  padding:20px;
+  border-radius:16px;
   position:relative;
   overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.25s ease;
   backdrop-filter:blur(10px);
 }
 
 .card:hover {
   transform:translateY(-6px);
-  background:var(--panel2);
   border-color:rgba(198,164,108,0.4);
 }
 
-/* interactive glow */
+/* INTERACTION (UNCHANGED FUNCTIONALITY) */
 .card::before {
   content:"";
   position:absolute;
   inset:0;
   background:radial-gradient(
-    600px circle at var(--x,50%) var(--y,50%),
-    rgba(255,42,42,0.18),
+    500px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,42,42,0.20),
     transparent 40%
   );
   opacity:0;
-  transition:0.2s;
+  transition:0.25s;
 }
 
-.card.active::before {
+.special .card.active::before {
   opacity:1;
 }
 
 /* NUMBER */
 .number {
   position:absolute;
-  top:-25px;
-  right:12px;
-  font-size:120px;
-  color:rgba(255,42,42,0.18);
+  top:-30px;
+  right:10px;
+  font-size:150px;
+  color:rgba(255,42,42,0.20);
   font-family:'Bebas Neue';
 }
 
@@ -193,29 +191,20 @@ body {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:30px;
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
-  font-size:18px;
-  opacity:0.85;
+  font-size:20px;
 }
 
-.flow {
-  font-size:22px;
-  color:var(--gold);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* CTA BLOCK */
+/* CTA BLOCK (UNCHANGED STRUCTURE) */
 .cta-block {
-  background:rgba(198,164,108,0.12);
-  border-top:1px solid rgba(255,255,255,0.08);
+  background:var(--gold);
+  color:black;
   padding:70px 20px;
   text-align:center;
 }
 
-/* FORM */
+/* MAILER FORM (UNCHANGED STRUCTURE - ONLY VISUAL POLISH) */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -225,36 +214,37 @@ body {
 #mlb2-41605663 select {
   width:100%;
   height:52px;
-  margin-bottom:12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.2);
   padding:0 14px;
-  background:rgba(255,255,255,0.08);
-  color:white;
+  margin-bottom:12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.9);
+  color:#111;
 }
 
+/* BUTTON */
 #mlb2-41605663 button {
   width:100%;
   padding:14px;
-  border:none;
-  border-radius:10px;
   background:var(--gold);
-  font-weight:600;
+  border:none;
+  border-radius:12px;
+  font-weight:700;
   cursor:pointer;
 }
 
-/* FOOTER */
+/* FOOTER (RESTORED ORIGINAL STYLE) */
 .footer {
   text-align:center;
   padding:30px;
-  opacity:0.6;
+  opacity:0.7;
 }
 
 /* MOBILE */
 @media(max-width:768px){
+  .hero h1 {font-size:60px;}
+  .section h2 {font-size:40px;}
   .grid {grid-template-columns:1fr;}
-  .hero h1 {font-size:54px;}
-  .section h2 {font-size:38px;}
 }
 
 </style>
@@ -265,6 +255,7 @@ body {
 <div class="grid-bg"></div>
 <div class="cursor"></div>
 
+<!-- HEADER -->
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
@@ -272,34 +263,52 @@ body {
   </div>
 </div>
 
-<div class="hero">
-  <h1>WEB SYSTEM PORTAL</h1>
-  <p>Agency-grade conversion system. Every card is a landing entry point into a structured funnel ecosystem.</p>
-  <a class="cta" href="#">VIEW SYSTEM</a>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
+  <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
+  <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
+</section>
 
-<div class="section">
-  <h2>WHY SYSTEMS OUTPERFORM WEBSITES</h2>
+<!-- PROBLEM -->
+<section class="section">
+  <h2>WHY MOST WEBSITES DON'T BRING CLIENTS</h2>
   <div class="grid">
-    <div class="card">No structure = no conversions</div>
-    <div class="card">Traffic without funnel logic</div>
-    <div class="card">No retention loop</div>
+    <div class="card">No clear structure</div>
+    <div class="card">Clicks lead nowhere</div>
+    <div class="card">No conversion system</div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <h2>PORTAL ARCHITECTURE</h2>
+<!-- SOLUTION -->
+<section class="section">
+  <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
   <div class="solution">
     <div>
-      Instead of static pages, this is a modular system with conversion entry points.
+      Instead of one generic website, you get structured landing pages per offer,
+      with full conversion flow and automation.
     </div>
-    <div class="flow">Portal → Landing → Form → Client</div>
+    <div class="flow">Card → Landing → Form → Email → Client</div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <h2>USE CASE MODULES</h2>
+<!-- MODULES -->
+<section class="section">
+  <h2>WHAT YOU GET</h2>
   <div class="grid">
+    <div class="card">Landing Pages</div>
+    <div class="card">Portal (Index)</div>
+    <div class="card">Email Automation</div>
+    <div class="card">Mobile UX</div>
+    <div class="card">Conversion Flow</div>
+    <div class="card">Custom Design</div>
+  </div>
+</section>
+
+<!-- USE CASE -->
+<section class="section">
+  <h2>REAL USE CASES</h2>
+  <div class="grid special">
 
     <div class="card" onclick="window.location.href='doberman.html'">
       Dog Breeders (Doberman)
@@ -308,68 +317,93 @@ body {
     <div class="card">Service Businesses</div>
     <div class="card">Digital Products</div>
   </div>
-</div>
+</section>
 
-<div class="section">
-  <h2>SYSTEM TIERS</h2>
-  <div class="grid">
+<!-- PACKAGES -->
+<section class="section">
+  <h2>SYSTEM PACKAGES</h2>
+  <div class="grid special">
 
     <div class="card">
       <div class="number">01</div>
-      Landing System
+      <h3>Landing System</h3>
+      <p>1–3 landing pages with conversion structure</p>
+      <p><strong>€150–€400</strong></p>
     </div>
 
     <div class="card">
       <div class="number">02</div>
-      Portal System
+      <h3>Portal + Landing System</h3>
+      <p>Multi-page structured system</p>
+      <p><strong>€300–€800</strong></p>
     </div>
 
     <div class="card">
       <div class="number">03</div>
-      Full Funnel
+      <h3>Full Funnel System</h3>
+      <p>Landing + email automation + follow-up</p>
+      <p><strong>€500–€1200</strong></p>
     </div>
 
   </div>
-</div>
+</section>
 
-<div class="cta-block">
-  <h2>BUILD YOUR SYSTEM</h2>
+<!-- CTA + FORM (RESTORED FULL ORIGINAL STRUCTURE) -->
+<section class="cta-block">
+  <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
+  <p>Enter your email and get access to your custom system setup.</p>
 
-  <form id="mlb2-41605663">
+  <div id="mlb2-41605663" class="ml-form-embedContainer ml-subscribe-form">
 
-    <input type="email" placeholder="Email">
-    <select>
-      <option>Select system</option>
-      <option>Landing</option>
-      <option>Portal</option>
-      <option>Full Funnel</option>
-    </select>
+    <div class="ml-form-embedWrapper embedForm">
 
-    <button>START</button>
-  </form>
-</div>
+      <form class="ml-block-form"
+        action="https://assets.mailerlite.com/jsonp/2126552/forms/188080892718089339/subscribe"
+        method="post"
+        target="_blank">
 
+        <input type="email" name="fields[email]" placeholder="Your email" required>
+        <select name="fields[system_packages]" required>
+          <option value="">Select package</option>
+          <option>Landing System</option>
+          <option>Portal + Landing System</option>
+          <option>Full Funnel System</option>
+        </select>
+
+        <button type="submit">START NOW</button>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (RESTORED) -->
 <div class="footer">
-  Agency Portal © Lionsign
+  <p><strong>Design builds dominance.</strong></p>
+  <p>2019–2026 Lionsign Research and Design. All rights reserved.</p>
 </div>
 
 <script>
 const cursor = document.querySelector('.cursor');
 
 document.addEventListener('mousemove', e=>{
-  cursor.style.left = e.clientX+'px';
-  cursor.style.top = e.clientY+'px';
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
 });
 
-document.querySelectorAll('.card').forEach(card=>{
+document.querySelectorAll('.special .card').forEach(card=>{
+  card.addEventListener('mouseenter', ()=>card.classList.add('active'));
+  card.addEventListener('mouseleave', ()=>card.classList.remove('active'));
+
   card.addEventListener('mousemove', e=>{
     const r = card.getBoundingClientRect();
     card.style.setProperty('--x', ((e.clientX-r.left)/r.width)*100+'%');
     card.style.setProperty('--y', ((e.clientY-r.top)/r.height)*100+'%');
   });
-
-  card.addEventListener('mouseenter', ()=>card.classList.add('active'));
-  card.addEventListener('mouseleave', ()=>card.classList.remove('active'));
 });
 </script>
 
