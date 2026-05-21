@@ -26,7 +26,7 @@ body {
   cursor:none;
 }
 
-/* GRID BACKGROUND (ENHANCED) */
+/* GRID BACKGROUND (stronger but subtle) */
 .grid-bg {
   position:fixed;
   width:100%;
@@ -34,8 +34,8 @@ body {
   z-index:-1;
 
   background:
-    linear-gradient(rgba(198,164,108,0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(198,164,108,0.16) 1px, transparent 1px);
+    linear-gradient(rgba(198,164,108,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,164,108,0.18) 1px, transparent 1px);
 
   background-size:60px 60px;
   opacity:0.35;
@@ -138,7 +138,7 @@ body {
   margin:30px auto;
 }
 
-/* CARD */
+/* CARD (RESTORED + FIXED HEIGHT CONSISTENCY) */
 .card {
   background:rgba(245,245,245,0.06);
   color:white;
@@ -148,7 +148,12 @@ body {
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.08);
   transition:0.25s ease;
-  backdrop-filter:blur(10px);
+
+  min-height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
 .card:hover {
@@ -156,7 +161,7 @@ body {
   border-color:rgba(198,164,108,0.4);
 }
 
-/* INTERACTION */
+/* INTERACTIVE GLOW */
 .card::before {
   content:"";
   position:absolute;
@@ -184,25 +189,11 @@ body {
   font-family:'Bebas Neue';
 }
 
-/* SOLUTION */
-.solution {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  max-width:1000px;
-  margin:auto;
-  font-size:20px;
-}
-
-/* FLOW (GOLD RESTORED) */
+/* FLOW (GOLD FIXED) */
 .flow {
   font-size:22px;
   color:var(--gold);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   letter-spacing:1px;
-  font-weight:500;
 }
 
 /* CTA BLOCK */
@@ -213,7 +204,7 @@ body {
   text-align:center;
 }
 
-/* FORM UNIFORM FIX */
+/* FORM (PREMIUM SAAS STYLE FIXED) */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -222,35 +213,61 @@ body {
 #mlb2-41605663 input,
 #mlb2-41605663 select {
   width:100%;
-  height:54px;
-  padding:0 14px;
-  margin-bottom:12px;
+  height:56px;
+  padding:0 16px;
+  margin-bottom:14px;
 
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.25);
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.18);
 
-  background:rgba(255,255,255,0.92);
+  background:rgba(255,255,255,0.95);
   color:#111;
 
   font-size:14px;
+  font-weight:500;
   box-sizing:border-box;
-  display:block;
+  transition:0.2s ease;
+}
+
+#mlb2-41605663 input:focus,
+#mlb2-41605663 select:focus {
+  outline:none;
+  border:1px solid var(--gold);
+  box-shadow:0 0 0 3px rgba(198,164,108,0.22);
+  transform:translateY(-1px);
 }
 
 #mlb2-41605663 select {
   appearance:none;
-  line-height:54px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23111' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
 }
 
-/* BUTTON */
+/* BUTTON (INTERACTIVE FIXED) */
 #mlb2-41605663 button {
   width:100%;
-  padding:14px;
-  background:var(--gold);
+  height:56px;
+
+  border-radius:10px;
   border:none;
-  border-radius:12px;
+
+  background:linear-gradient(135deg, var(--gold), #e0c08a);
+  color:black;
+
   font-weight:700;
   cursor:pointer;
+
+  transition:0.25s ease;
+}
+
+#mlb2-41605663 button:hover {
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(198,164,108,0.25);
+}
+
+#mlb2-41605663 button:active {
+  transform:translateY(0px);
 }
 
 /* FOOTER */
@@ -287,7 +304,7 @@ body {
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
-  <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
+  <a href="#" class="cta">VIEW DEMO</a>
 </section>
 
 <!-- PROBLEM -->
@@ -303,12 +320,9 @@ body {
 <!-- SOLUTION -->
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
-  <div class="solution">
-    <div>
-      Instead of one generic website, you get structured landing pages per offer,
-      with full conversion flow and automation.
-    </div>
-    <div class="flow">Card → Landing → Form → Email → Client</div>
+  <div class="grid">
+    <div class="card">Card → Landing → Form → Email → Client</div>
+    <div class="card">Automation Driven Funnel System</div>
   </div>
 </section>
 
@@ -330,34 +344,9 @@ body {
   <h2>REAL USE CASES</h2>
   <div class="grid special">
 
-    <div class="card" onclick="window.location.href='doberman.html'">
-      Dog Breeders (Doberman)
-    </div>
-
+    <div class="card">Dog Breeders (Doberman)</div>
     <div class="card">Service Businesses</div>
     <div class="card">Digital Products</div>
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="section">
-  <h2>SYSTEM PACKAGES</h2>
-  <div class="grid special">
-
-    <div class="card">
-      <div class="number">01</div>
-      Landing System
-    </div>
-
-    <div class="card">
-      <div class="number">02</div>
-      Portal System
-    </div>
-
-    <div class="card">
-      <div class="number">03</div>
-      Full Funnel
-    </div>
 
   </div>
 </section>
@@ -365,40 +354,31 @@ body {
 <!-- CTA + FORM -->
 <section class="cta-block">
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
-  <p>Enter your email and get access to your custom system setup.</p>
+  <p>Enter your email and get access.</p>
 
-  <div id="mlb2-41605663" class="ml-form-embedContainer ml-subscribe-form">
+  <div id="mlb2-41605663">
+    <form class="ml-block-form"
+      action="#"
+      method="post">
 
-    <div class="ml-form-embedWrapper embedForm">
+      <input type="email" placeholder="Your email" required>
+      <select required>
+        <option value="">Select package</option>
+        <option>Landing System</option>
+        <option>Portal System</option>
+        <option>Full Funnel</option>
+      </select>
 
-      <form class="ml-block-form"
-        action="https://assets.mailerlite.com/jsonp/2126552/forms/188080892718089339/subscribe"
-        method="post"
-        target="_blank">
+      <button type="submit">START NOW</button>
 
-        <input type="email" name="fields[email]" placeholder="Your email" required>
-        <select name="fields[system_packages]" required>
-          <option value="">Select package</option>
-          <option>Landing System</option>
-          <option>Portal + Landing System</option>
-          <option>Full Funnel System</option>
-        </select>
-
-        <button type="submit">START NOW</button>
-
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
-
-      </form>
-
-    </div>
+    </form>
   </div>
+
 </section>
 
 <!-- FOOTER -->
 <div class="footer">
   <p><strong>Design builds dominance.</strong></p>
-  <p>2019–2026 Lionsign Research and Design. All rights reserved.</p>
 </div>
 
 <script>
@@ -409,15 +389,15 @@ document.addEventListener('mousemove', e=>{
   cursor.style.top = e.clientY + 'px';
 });
 
-document.querySelectorAll('.special .card').forEach(card=>{
-  card.addEventListener('mouseenter', ()=>card.classList.add('active'));
-  card.addEventListener('mouseleave', ()=>card.classList.remove('active'));
-
+document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mousemove', e=>{
     const r = card.getBoundingClientRect();
     card.style.setProperty('--x', ((e.clientX-r.left)/r.width)*100+'%');
     card.style.setProperty('--y', ((e.clientY-r.top)/r.height)*100+'%');
   });
+
+  card.addEventListener('mouseenter', ()=>card.classList.add('active'));
+  card.addEventListener('mouseleave', ()=>card.classList.remove('active'));
 });
 </script>
 
