@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doberman Breeding System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#0b0b0b;
+  --gold:#c6a46c;
+  --red:#ff2a2a;
+}
+
+body{
+  margin:0;
+  background:var(--black);
+  color:white;
+  font-family:'Oswald',sans-serif;
+  cursor:none;
+}
+
+/* CURSOR */
+.cursor{
+  width:18px;
+  height:18px;
+  border:2px solid var(--red);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:0.15s ease;
+  z-index:9999;
+}
+
+.cursor.grow{
+  width:55px;
+  height:55px;
+  border-width:2px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:100px 20px 60px;
+}
+
+.hero h1{
+  font-family:'Bebas Neue';
+  font-size:90px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  font-size:18px;
+  opacity:0.85;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 34px;
+  border-radius:8px;
+  background:var(--gold);
+  color:black;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  background:#e0c08a;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  max-width:1100px;
+  margin:50px auto;
+  padding:0 20px;
+}
+
+.card{
+  background:#f5f5f5;
+  color:black;
+  padding:20px;
+  border-radius:18px;
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* glow interaction */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,42,42,0.25), transparent 45%);
+  opacity:0;
+  transition:0.2s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+/* VIDEO */
+.video{
+  max-width:900px;
+  margin:60px auto;
+  text-align:center;
+}
+
+video{
+  width:100%;
+  border-radius:18px;
+}
+
+/* SECTION */
+.section{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.section h2{
+  font-family:'Bebas Neue';
+  font-size:60px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr;}
+  .hero h1{font-size:55px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- CURSOR -->
+<div class="cursor"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>DOBERMAN BREEDING SYSTEM</h1>
+  <p>
+    Premium structured system for breeders who want control, pedigree clarity and client acquisition.
+    Every dog, every lineage, every sale — organized into a conversion system.
+  </p>
+
+  <a class="btn" href="#contact">Request Access</a>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+
+  <div class="card">🧬 Pedigree tracking system</div>
+  <div class="card">🐾 Breeding cycle management</div>
+  <div class="card">📈 Client acquisition funnel</div>
+  <div class="card">📸 Puppy showcase pages</div>
+  <div class="card">🏆 Show results tracking</div>
+  <div class="card">💬 Inquiry automation system</div>
+
+</div>
+
+<!-- VIDEO -->
+<div class="video">
+  <h2>BREEDER SHOWCASE</h2>
+
+  <video controls>
+    <source src="doberman-breeding-system-promo.mp4" type="video/mp4">
+  </video>
+
+  <p style="opacity:0.7;margin-top:10px;">
+    Promotional video showcasing the Doberman Breeding System service. 
+    This is a structured demonstration of how the system works in real business conditions,
+    including positioning, client acquisition and breeding presentation strategy.
+  </p>
+</div>
+
+<!-- TEXT -->
+<div class="section">
+  <h2>WHY THIS SYSTEM WORKS</h2>
+  <p style="max-width:800px;margin:auto;opacity:0.85;">
+    Instead of random Instagram posts and scattered communication, every Doberman gets a structured digital identity.
+    That means: higher trust, higher price positioning and controlled buyer psychology.
+  </p>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <h2>CONTACT</h2>
+  <a class="btn" href="https://www.facebook.com/kristina.radosavljevic" target="_blank">
+    Send Inquiry
+  </a>
+</div>
+
+<script>
+/* CURSOR FOLLOW */
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e=>{
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+/* CARD INTERACTION */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--x', ((e.clientX - r.left)/r.width)*100 + '%');
+    card.style.setProperty('--y', ((e.clientY - r.top)/r.height)*100 + '%');
+  });
+
+  card.addEventListener('mouseenter', ()=>{
+    cursor.classList.add('grow');
+  });
+
+  card.addEventListener('mouseleave', ()=>{
+    cursor.classList.remove('grow');
+  });
+});
+</script>
+
+</body>
+</html>
