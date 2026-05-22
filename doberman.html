@@ -11,12 +11,11 @@
 :root{
   --bg:#07080b;
   --panel:rgba(255,255,255,0.06);
-  --panel-strong:rgba(255,255,255,0.1);
   --border:rgba(255,255,255,0.12);
   --text:#eaeaea;
   --muted:rgba(255,255,255,0.65);
-  --gold:#c6a46c;
   --red:#ff2a2a;
+  --gold:#c6a46c;
 }
 
 *{box-sizing:border-box}
@@ -25,27 +24,34 @@ body{
   margin:0;
   font-family:'Inter',sans-serif;
   background:
-    radial-gradient(circle at 20% 10%, rgba(198,164,108,0.12), transparent 35%),
-    radial-gradient(circle at 80% 30%, rgba(255,42,42,0.12), transparent 40%),
+    radial-gradient(circle at 20% 10%, rgba(255,42,42,0.10), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(198,164,108,0.10), transparent 40%),
     var(--bg);
   color:var(--text);
-  cursor:none; /* IMPORTANT for custom cursor */
+  cursor:none;
 }
 
 /* ================= CURSOR ================= */
 .cursor{
-  width:22px;
-  height:22px;
+  width:18px;
+  height:18px;
   border:2px solid var(--red);
   border-radius:50%;
   position:fixed;
   top:0;
   left:0;
-  pointer-events:none;
   transform:translate(-50%,-50%);
-  transition:transform 0.08s ease-out, width 0.2s, height 0.2s;
+  pointer-events:none;
   z-index:9999;
-  box-shadow:0 0 15px rgba(255,42,42,0.35);
+  box-shadow:0 0 18px rgba(255,42,42,0.35);
+  transition:width 0.15s ease,height 0.15s ease, transform 0.08s ease;
+}
+
+.cursor.active{
+  width:32px;
+  height:32px;
+  border-width:2px;
+  box-shadow:0 0 25px rgba(255,42,42,0.55);
 }
 
 /* ================= HERO ================= */
@@ -58,9 +64,8 @@ body{
   font-family:'Bebas Neue';
   font-size:92px;
   margin:0;
-  background:linear-gradient(90deg,#fff, #c6a46c, #fff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#ffffff; /* FIXED: čist belo */
+  letter-spacing:2px;
 }
 
 .hero p{
@@ -82,7 +87,6 @@ body{
   text-decoration:none;
   font-weight:600;
   transition:0.25s;
-  box-shadow:0 10px 30px rgba(198,164,108,0.15);
 }
 
 .btn:hover{
@@ -97,7 +101,6 @@ body{
   max-width:1100px;
   margin:60px auto;
   padding:0 20px;
-  perspective:1000px;
 }
 
 /* ================= CARDS ================= */
@@ -110,17 +113,16 @@ body{
   position:relative;
   overflow:hidden;
   transition:0.25s;
-  transform-style:preserve-3d;
 }
 
-/* RED PREMIUM ANIMATION */
+/* RED ANIMATION LAYER */
 .card::before{
   content:"";
   position:absolute;
   inset:0;
   background:radial-gradient(circle at var(--x,50%) var(--y,50%),
-    rgba(255,42,42,0.25),
-    transparent 55%);
+    rgba(255,42,42,0.30),
+    transparent 60%);
   opacity:0;
   transition:0.2s;
 }
@@ -131,18 +133,18 @@ body{
 
 .card:hover{
   transform:translateY(-6px) scale(1.02);
-  border-color:rgba(255,42,42,0.25);
-  box-shadow:0 20px 60px rgba(255,42,42,0.08);
+  border-color:rgba(255,42,42,0.35);
+  box-shadow:0 0 35px rgba(255,42,42,0.12);
 }
 
-/* subtle breathing animation */
-@keyframes pulseGlow{
+/* subtle pulse */
+@keyframes pulse{
   0%,100%{box-shadow:0 0 0 rgba(255,42,42,0);}
-  50%{box-shadow:0 0 25px rgba(255,42,42,0.12);}
+  50%{box-shadow:0 0 20px rgba(255,42,42,0.10);}
 }
 
 .card{
-  animation:pulseGlow 6s infinite;
+  animation:pulse 5s infinite;
 }
 
 /* ================= VIDEO ================= */
@@ -202,14 +204,12 @@ video{
 
 <!-- GRID -->
 <div class="grid">
-
   <div class="card">🧬 Pedigree tracking system</div>
   <div class="card">🐾 Breeding cycle management</div>
   <div class="card">📈 Client acquisition funnel</div>
   <div class="card">📸 Puppy showcase pages</div>
   <div class="card">🏆 Show results tracking</div>
   <div class="card">💬 Inquiry automation system</div>
-
 </div>
 
 <!-- VIDEO -->
@@ -237,7 +237,7 @@ video{
 </div>
 
 <script>
-/* ================= CURSOR FOLLOW ================= */
+/* CURSOR MOVE */
 const cursor = document.getElementById('cursor');
 
 document.addEventListener('mousemove', e=>{
@@ -245,7 +245,13 @@ document.addEventListener('mousemove', e=>{
   cursor.style.top = e.clientY + 'px';
 });
 
-/* ================= CARD LIGHT TRACK ================= */
+/* CURSOR ACTIVE ON INTERACT */
+document.querySelectorAll('a, .card').forEach(el=>{
+  el.addEventListener('mouseenter', ()=>cursor.classList.add('active'));
+  el.addEventListener('mouseleave', ()=>cursor.classList.remove('active'));
+});
+
+/* CARD LIGHT TRACK */
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('mousemove', e=>{
     const r = card.getBoundingClientRect();
