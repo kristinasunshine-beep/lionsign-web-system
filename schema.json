@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lionsign Studio",
+  "url": "https://www.lionsignstudio.com",
+  "logo": "https://www.lionsignstudio.com/logo.png",
+  "sameAs": [
+    "https://www.facebook.com/kristina.radosavljevic"
+  ],
+  "description": "Conversion-driven web systems for client generation, landing pages and funnels.",
+  "areaServed": "Worldwide",
+  "founder": {
+    "@type": "Person",
+    "name": "Kristina"
+  }
+}
