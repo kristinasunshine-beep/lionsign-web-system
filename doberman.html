@@ -17,7 +17,6 @@
   --muted:rgba(255,255,255,0.65);
   --gold:#c6a46c;
   --red:#ff3b3b;
-  --glow:rgba(255,59,59,0.25);
 }
 
 *{box-sizing:border-box}
@@ -88,7 +87,6 @@ body{
   padding:0 20px;
 }
 
-/* CARD SaaS STYLE */
 .card{
   background:var(--panel);
   border:1px solid var(--border);
@@ -99,44 +97,18 @@ body{
   position:relative;
   overflow:hidden;
   transition:0.25s;
-  color:var(--text);
 }
 
 .card:hover{
   transform:translateY(-6px);
   background:var(--panel-strong);
-  border-color:rgba(198,164,108,0.25);
 }
 
-/* PREMIUM GLOW TRACKING */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at var(--x,50%) var(--y,50%),
-    rgba(255,59,59,0.22),
-    transparent 55%);
-  opacity:0;
-  transition:0.2s;
-}
-
-.card:hover::before{
-  opacity:1;
-}
-
-/* VIDEO */
-.video{
+/* VIDEO SECTION (minimal SaaS embed) */
+.video-wrap{
   max-width:920px;
   margin:80px auto;
-  text-align:center;
   padding:0 20px;
-}
-
-.video h2{
-  font-family:'Bebas Neue';
-  font-size:56px;
-  margin-bottom:18px;
-  letter-spacing:1px;
 }
 
 video{
@@ -169,7 +141,6 @@ video{
 @media(max-width:768px){
   .grid{grid-template-columns:1fr;}
   .hero h1{font-size:56px;}
-  .video h2{font-size:40px;}
 }
 </style>
 </head>
@@ -189,27 +160,23 @@ video{
 
 <!-- GRID -->
 <div class="grid">
-
   <div class="card">🧬 Pedigree tracking system</div>
   <div class="card">🐾 Breeding cycle management</div>
   <div class="card">📈 Client acquisition funnel</div>
   <div class="card">📸 Puppy showcase pages</div>
   <div class="card">🏆 Show results tracking</div>
   <div class="card">💬 Inquiry automation system</div>
-
 </div>
 
-<!-- VIDEO -->
-<div class="video">
-  <h2>BREEDER SHOWCASE</h2>
+<!-- VIDEO (FIXED PATH + MOV SUPPORT) -->
+<div class="video-wrap">
 
-  <video controls>
-    <source src="doberman-breeding-system-promo.mp4" type="video/mp4">
+  <video controls playsinline>
+    <source src="doberman-breeding-system-promo.mov" type="video/quicktime">
+    <source src="doberman-breeding-system-promo.mov" type="video/mp4">
+    Your browser does not support video playback.
   </video>
 
-  <p style="margin-top:14px;color:rgba(255,255,255,0.6);font-size:14px;">
-    Promotional video showcasing the Doberman Breeding System service.
-  </p>
 </div>
 
 <!-- TEXT -->
@@ -228,16 +195,6 @@ video{
     Send Inquiry
   </a>
 </div>
-
-<script>
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('mousemove', e=>{
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--x', ((e.clientX - r.left)/r.width)*100 + '%');
-    card.style.setProperty('--y', ((e.clientY - r.top)/r.height)*100 + '%');
-  });
-});
-</script>
 
 </body>
 </html>
