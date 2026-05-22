@@ -211,7 +211,7 @@ body {
   text-align:center;
 }
 
-/* FORM */
+/* FORM - REDESIGN */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -220,30 +220,50 @@ body {
 #mlb2-41605663 form {
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:14px;
 }
 
+/* uniform fields */
 #mlb2-41605663 input,
 #mlb2-41605663 select {
   width:100%;
-  height:54px;
-  padding:0 16px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.25);
-  background:rgba(255,255,255,0.92);
+  height:56px;
+  padding:0 18px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,0.15);
+  background:rgba(255,255,255,0.95);
   color:#111;
-  font-size:14px;
+  font-size:15px;
+  font-family:'Oswald',sans-serif;
+  transition:all 0.2s ease;
+  outline:none;
 }
 
+/* focus effect */
+#mlb2-41605663 input:focus,
+#mlb2-41605663 select:focus {
+  border-color:var(--black);
+  box-shadow:0 0 0 2px rgba(0,0,0,0.08);
+  transform:translateY(-1px);
+}
+
+/* modern button */
 #mlb2-41605663 button {
   width:100%;
-  height:54px;
-  background:linear-gradient(135deg, var(--black), #2a2a2a);
+  height:58px;
+  background:linear-gradient(135deg, var(--black), #1f1f1f);
   color:white;
   border:none;
-  border-radius:12px;
+  border-radius:14px;
   font-weight:700;
+  letter-spacing:0.5px;
   cursor:pointer;
+  transition:all 0.25s ease;
+}
+
+#mlb2-41605663 button:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
 }
 
 /* FOOTER */
