@@ -308,6 +308,15 @@ body {
   .grid {grid-template-columns:1fr;}
 }
 
+/* ===================== */
+/* FIX ONLY              */
+/* ===================== */
+
+/* prevents duplicated placeholder rendering in some browsers */
+#packageSelect option[value=""] {
+  display: none;
+}
+
 </style>
 </head>
 
@@ -411,7 +420,7 @@ body {
 
       <div class="select-wrap">
         <select id="packageSelect" required>
-          <option value="" disabled selected>Landing System</option>
+          <option value="" disabled selected></option>
           <option>Landing System</option>
           <option>Portal + Landing System</option>
           <option>Full Funnel System</option>
