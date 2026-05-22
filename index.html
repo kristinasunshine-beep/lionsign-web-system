@@ -206,10 +206,7 @@ body {
   text-align:center;
 }
 
-/* ========================= */
-/* FORM - FINAL UX VERSION    */
-/* ========================= */
-
+/* FORM */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -311,6 +308,15 @@ body {
   .grid {grid-template-columns:1fr;}
 }
 
+/* ===================== */
+/* FIX (ONLY CHANGE)     */
+/* ===================== */
+
+/* uklanja vizuelni “duplicate placeholder” efekat u nekim browserima */
+#packageSelect option[disabled] {
+  color: #999;
+}
+
 </style>
 </head>
 
@@ -408,9 +414,7 @@ body {
   <div id="mlb2-41605663">
     <form>
 
-      <div class="select-wrap">
-        <input type="email" placeholder="Your email" required>
-      </div>
+      <input type="email" placeholder="Your email" required>
 
       <div class="select-wrap">
         <select id="packageSelect" required>
@@ -441,6 +445,7 @@ document.addEventListener('mousemove', e=>{
 });
 
 const select = document.getElementById('packageSelect');
+
 select.addEventListener('change', function(){
   this.classList.add('selected');
 });
