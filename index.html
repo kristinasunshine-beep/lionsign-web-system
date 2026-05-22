@@ -151,18 +151,18 @@ body {
   border-color:rgba(198,164,108,0.4);
 }
 
-/* INTERACTION */
-.card::before {
+/* ✅ PREMIUM RED TRACKING GLOW (FIXED) */
+.special .card::before {
   content:"";
   position:absolute;
   inset:0;
   background:radial-gradient(
     500px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255,42,42,0.20),
-    transparent 40%
+    rgba(255,42,42,0.25),
+    transparent 45%
   );
   opacity:0;
-  transition:0.25s;
+  transition:0.2s ease;
 }
 
 .special .card.active::before {
@@ -449,6 +449,7 @@ document.addEventListener('mousemove', e=>{
   cursor.style.top = e.clientY + 'px';
 });
 
+/* dropdown */
 const btn = document.getElementById('selectBtn');
 const options = document.getElementById('options');
 
@@ -462,6 +463,25 @@ document.querySelectorAll('.option').forEach(opt=>{
     options.style.display = 'none';
   });
 });
+
+/* ✅ PREMIUM RED TRACKING GLOW (REAL USE CASES FIX) */
+document.querySelectorAll('.special .card').forEach(card=>{
+  card.addEventListener('mousemove', (e)=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    card.style.setProperty('--x', `${x}px`);
+    card.style.setProperty('--y', `${y}px`);
+
+    card.classList.add('active');
+  });
+
+  card.addEventListener('mouseleave', ()=>{
+    card.classList.remove('active');
+  });
+});
+
 </script>
 
 </body>
