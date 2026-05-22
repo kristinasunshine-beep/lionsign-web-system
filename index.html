@@ -309,12 +309,12 @@ body {
 }
 
 /* ===================== */
-/* FIX (ONLY CHANGE)     */
+/* FIX ONLY              */
 /* ===================== */
 
-/* uklanja vizuelni “duplicate placeholder” efekat u nekim browserima */
-#packageSelect option[disabled] {
-  color: #999;
+/* fixes native select placeholder duplication behavior */
+#packageSelect option[value=""] {
+  color: #777;
 }
 
 </style>
@@ -414,7 +414,9 @@ body {
   <div id="mlb2-41605663">
     <form>
 
-      <input type="email" placeholder="Your email" required>
+      <div class="select-wrap">
+        <input type="email" placeholder="Your email" required>
+      </div>
 
       <div class="select-wrap">
         <select id="packageSelect" required>
