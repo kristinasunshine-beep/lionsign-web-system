@@ -308,15 +308,6 @@ body {
   .grid {grid-template-columns:1fr;}
 }
 
-/* ===================== */
-/* FIX ONLY              */
-/* ===================== */
-
-/* fixes native select placeholder duplication behavior */
-#packageSelect option[value=""] {
-  color: #777;
-}
-
 </style>
 </head>
 
@@ -420,7 +411,7 @@ body {
 
       <div class="select-wrap">
         <select id="packageSelect" required>
-          <option value="" disabled selected>Select package</option>
+          <option value="" disabled selected>Landing System</option>
           <option>Landing System</option>
           <option>Portal + Landing System</option>
           <option>Full Funnel System</option>
