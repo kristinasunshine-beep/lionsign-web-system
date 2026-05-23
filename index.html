@@ -17,7 +17,6 @@
   --red:#ff2a2a;
 }
 
-/* BODY */
 body {
   margin:0;
   background: radial-gradient(circle at top, #151515, #0b0b0b 60%);
@@ -26,7 +25,6 @@ body {
   cursor:none;
 }
 
-/* GRID */
 .grid-bg {
   position:fixed;
   width:100%;
@@ -39,7 +37,6 @@ body {
   opacity:0.4;
 }
 
-/* CURSOR */
 .cursor {
   width:18px;
   height:18px;
@@ -52,7 +49,10 @@ body {
   z-index:999;
 }
 
-/* HEADER */
+.cursor.grow {
+  transform:translate(-50%,-50%) scale(2.2);
+}
+
 .header {
   position:sticky;
   top:0;
@@ -71,15 +71,12 @@ body {
   color:white;
 }
 
-/* CONTACT */
 .contact a {
   color:var(--gold);
   font-size:20px;
   text-decoration:none;
-  font-family:'Oswald',sans-serif;
 }
 
-/* HERO */
 .hero {
   text-align:center;
   padding:50px 20px 40px;
@@ -96,7 +93,6 @@ body {
   max-width:650px;
 }
 
-/* CTA */
 .cta {
   padding:16px 50px;
   background:linear-gradient(135deg, var(--gold), #e0c08a);
@@ -106,7 +102,6 @@ body {
   display:inline-block;
 }
 
-/* SECTION */
 .section {
   padding:40px 15px;
   text-align:center;
@@ -117,7 +112,6 @@ body {
   font-size:56px;
 }
 
-/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -126,7 +120,6 @@ body {
   margin:20px auto;
 }
 
-/* CARD BASE */
 .card {
   background:rgba(245,245,245,0.06);
   color:white;
@@ -138,13 +131,11 @@ body {
   transition:0.25s ease;
 }
 
-/* HOVER */
 .card:hover {
   transform:translateY(-6px) scale(1.03);
   border-color:var(--red);
 }
 
-/* RED GLOW */
 .special .card::before {
   content:"";
   position:absolute;
@@ -159,7 +150,6 @@ body {
   opacity:1;
 }
 
-/* NUMBER */
 .number {
   position:absolute;
   top:-35px;
@@ -169,7 +159,6 @@ body {
   font-family:'Bebas Neue';
 }
 
-/* SYSTEM PACKAGES */
 .section:nth-of-type(6) .card {
   min-height:150px;
   padding:20px;
@@ -181,7 +170,6 @@ body {
   gap:6px;
 }
 
-/* PRICE ROW */
 .price-row {
   display:flex;
   gap:8px;
@@ -191,7 +179,6 @@ body {
   justify-content:center;
 }
 
-/* CTA BLOCK */
 .cta-block {
   background:var(--gold);
   color:black;
@@ -199,7 +186,6 @@ body {
   text-align:center;
 }
 
-/* FLOW (UPDATED) */
 .flow {
   font-size:34px;
   font-weight:900;
@@ -209,18 +195,13 @@ body {
   margin-top:10px;
 }
 
-/* FORM */
 #mlb2-41605663 {
   max-width:520px;
   margin:20px auto 0;
 }
 
-.upper {
-  text-transform:uppercase;
-  font-weight:600;
-  font-size:14px;
-  letter-spacing:1px;
-  margin-bottom:6px;
+#mlb2-41605663 input {
+  padding-left:18px;
 }
 
 #mlb2-41605663 form {
@@ -232,7 +213,6 @@ body {
   background:rgba(0,0,0,0.3);
   backdrop-filter:blur(16px);
   border:1px solid rgba(255,255,255,0.2);
-  font-family:'Oswald',sans-serif;
 }
 
 #mlb2-41605663 input,
@@ -242,11 +222,9 @@ body {
   height:58px;
   border-radius:14px;
   box-sizing:border-box;
-  font-family:'Oswald',sans-serif;
   font-size:15px;
 }
 
-/* dropdown */
 .custom-select {
   position:relative;
 }
@@ -282,7 +260,6 @@ body {
   background:#f2f2f2;
 }
 
-/* button */
 #mlb2-41605663 button {
   background:linear-gradient(135deg, var(--black), #1a1a1a);
   color:white;
@@ -291,13 +268,13 @@ body {
   text-transform:uppercase;
 }
 
-/* FOOTER */
+/* FOOTER (UPDATED SIZE) */
 .footer {
   text-align:center;
   padding:20px;
   font-weight:900;
   color:rgba(160,160,160,0.9);
-  font-size:44px;
+  font-size:36px;
   letter-spacing:2px;
 }
 
@@ -336,6 +313,10 @@ body {
 .faq-item.active .faq-answer {
   max-height:200px;
   padding:10px 18px 18px;
+}
+
+.cursor.grow {
+  transform:translate(-50%,-50%) scale(2.2);
 }
 
 </style>
@@ -391,7 +372,7 @@ body {
 <section class="section">
   <h2>REAL USE CASES</h2>
   <div class="grid special">
-    <div class="card" onclick="window.location.href='doberman.html'">Dog Breeders (Doberman)</div>
+    <div class="card">Dog Breeders (Doberman)</div>
     <div class="card">Service Businesses</div>
     <div class="card">Digital Products</div>
   </div>
@@ -476,44 +457,18 @@ body {
 
 const cursor = document.querySelector('.cursor');
 
-/* CURSOR */
 document.addEventListener('mousemove', e=>{
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
 
-/* SPECIAL CARDS */
-document.querySelectorAll('.special .card').forEach(card=>{
-  card.addEventListener('mousemove', (e)=>{
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--x', x + '%');
-    card.style.setProperty('--y', y + '%');
-    card.classList.add('active');
-  });
-
-  card.addEventListener('mouseleave', ()=>{
-    card.classList.remove('active');
-  });
+/* cursor grow effect */
+document.querySelectorAll('a, .cta, .card').forEach(el=>{
+  el.addEventListener('mouseenter', ()=>cursor.classList.add('grow'));
+  el.addEventListener('mouseleave', ()=>cursor.classList.remove('grow'));
 });
 
-/* DROPDOWN */
-const btn = document.querySelector('.select-btn');
-const options = document.querySelector('.options');
-
-btn.addEventListener('click', ()=>{
-  options.style.display = options.style.display === 'block' ? 'none' : 'block';
-});
-
-document.querySelectorAll('.option').forEach(opt=>{
-  opt.addEventListener('click', ()=>{
-    btn.textContent = opt.textContent;
-    options.style.display = 'none';
-  });
-});
-
-/* FAQ TOGGLE */
+/* FAQ */
 document.querySelectorAll('.faq-question').forEach(q=>{
   q.addEventListener('click', ()=>{
     q.parentElement.classList.toggle('active');
