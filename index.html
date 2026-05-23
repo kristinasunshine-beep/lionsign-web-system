@@ -17,6 +17,7 @@
   --red:#ff2a2a;
 }
 
+/* BODY */
 body {
   margin:0;
   background:
@@ -26,17 +27,20 @@ body {
   cursor:none;
 }
 
-/* GRID */
+/* GRID BACKGROUND (pojačan malo) */
 .grid-bg {
   position:fixed;
   width:100%;
   height:100%;
   z-index:-1;
+
   background:
-    linear-gradient(rgba(198,164,108,0.20) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(198,164,108,0.20) 1px, transparent 1px);
+    linear-gradient(rgba(198,164,108,0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,164,108,0.22) 1px, transparent 1px);
+
   background-size:60px 60px;
   opacity:0.4;
+  animation:gridMove 25s linear infinite;
 }
 
 /* CURSOR */
@@ -52,7 +56,7 @@ body {
   z-index:999;
 }
 
-/* HEADER ORIGINAL */
+/* HEADER (original) */
 .header {
   position:sticky;
   top:0;
@@ -68,10 +72,11 @@ body {
 .logo {
   font-family:'Bebas Neue';
   font-size:36px;
+  color:white;
 }
 
 .contact a {
-  color:var(--gold);
+  color:var(--gold); /* jedina izmena */
   font-size:22px;
   text-decoration:none;
 }
@@ -129,92 +134,84 @@ body {
   color:white;
   padding:20px;
   border-radius:16px;
-  border:2px solid var(--gold); /* samo dodat border */
+  border:1px solid rgba(255,255,255,0.10);
+  position:relative;
+  overflow:hidden;
+  transition:0.25s ease;
+  backdrop-filter:blur(10px);
 }
 
-/* SYSTEM TEXT – isti tekst, samo 2 reda */
+/* WHY SECTION – samo dodat border */
+.section:nth-of-type(1) .card {
+  border:1px solid var(--gold);
+}
+
+/* HOVER */
+.card:hover {
+  transform:translateY(-6px);
+}
+
+/* PREMIUM GLOW (ostavljen) */
+.special .card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    500px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,42,42,0.35),
+    transparent 45%
+  );
+  opacity:0;
+  transition:opacity 0.15s ease;
+}
+
+.special .card:hover::before,
+.special .card.active::before {
+  opacity:1;
+}
+
+/* NUMBER */
+.number {
+  position:absolute;
+  top:-30px;
+  right:10px;
+  font-size:150px;
+  color:rgba(255,42,42,0.20);
+  font-family:'Bebas Neue';
+}
+
+/* SOLUTION */
 .solution {
-  max-width:800px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  max-width:1000px;
   margin:auto;
   font-size:20px;
+}
+
+/* CTA BLOCK */
+.cta-block {
+  background:var(--gold);
+  color:black;
+  padding:70px 20px;
   text-align:center;
-  line-height:1.6;
 }
 
-/* FORM – ORIGINAL + UNIFORM */
-#mlb2-41605663 {
-  max-width:520px;
-  margin:30px auto 0;
-}
-
-#mlb2-41605663 form {
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  padding:24px;
-  border-radius:18px;
-  background:rgba(0,0,0,0.3);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.2);
-}
-
-/* 👉 KLJUČNO: uniformisana visina */
+/* FORM – SAMO UNIFORM */
 #mlb2-41605663 input,
 .select-btn,
 #mlb2-41605663 button {
-  width:100%;
   height:60px;
-  padding:0 18px;
-  border-radius:14px;
 }
 
-/* ORIGINAL SELECT */
-.custom-select {
-  position:relative;
-  width:100%;
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:30px;
+  opacity:0.7;
 }
 
-.select-btn {
-  background:#fff;
-  color:#777;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-  font-size:15px;
-}
-
-.options {
-  position:absolute;
-  top:65px;
-  left:0;
-  width:100%;
-  background:#fff;
-  border-radius:14px;
-  overflow:hidden;
-  display:none;
-  z-index:10;
-}
-
-.option {
-  padding:14px 18px;
-  cursor:pointer;
-  color:#111;
-}
-
-.option:hover {
-  background:#f2f2f2;
-}
-
-#mlb2-41605663 button {
-  background:linear-gradient(135deg, var(--black), #1a1a1a);
-  color:white;
-  border:none;
-  font-weight:700;
-  cursor:pointer;
-}
-
-/* MOBILE */
 @media(max-width:768px){
   .hero h1 {font-size:60px;}
   .section h2 {font-size:40px;}
@@ -257,7 +254,10 @@ body {
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
   <div class="solution">
-    Instead of one generic website, you get structured landing pages per offer.
+    <div>
+      Instead of one generic website, you get structured landing pages per offer.
+    </div>
+    <div class="flow">Card → Landing → Form → Email → Client</div>
   </div>
 </section>
 
@@ -274,21 +274,33 @@ body {
 </section>
 
 <section class="section">
+  <h2>REAL USE CASES</h2>
+  <div class="grid special">
+    <div class="card">Dog Breeders (Doberman)</div>
+    <div class="card">Service Businesses</div>
+    <div class="card">Digital Products</div>
+  </div>
+</section>
+
+<section class="section">
   <h2>SYSTEM PACKAGES</h2>
-  <div class="grid">
+  <div class="grid special">
     <div class="card">
+      <div class="number">01</div>
       <h3>Landing System</h3>
       <p>1–3 landing pages</p>
       <p><strong>€150–€400</strong></p>
     </div>
 
     <div class="card">
+      <div class="number">02</div>
       <h3>Portal + Landing System</h3>
       <p>Multi-page system</p>
       <p><strong>€300–€800</strong></p>
     </div>
 
     <div class="card">
+      <div class="number">03</div>
       <h3>Full Funnel System</h3>
       <p>Automation + follow-up</p>
       <p><strong>€500–€1200</strong></p>
@@ -318,19 +330,16 @@ body {
   </div>
 </section>
 
+<div class="footer">
+  <p><strong>Design builds dominance.</strong></p>
+</div>
+
 <script>
 const btn = document.getElementById('selectBtn');
 const options = document.getElementById('options');
 
 btn.addEventListener('click', ()=>{
   options.style.display = options.style.display === 'block' ? 'none' : 'block';
-});
-
-document.querySelectorAll('.option').forEach(opt=>{
-  opt.addEventListener('click', ()=>{
-    btn.textContent = opt.textContent;
-    options.style.display = 'none';
-  });
 });
 </script>
 
