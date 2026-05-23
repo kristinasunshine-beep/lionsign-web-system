@@ -20,32 +20,23 @@
 /* BODY */
 body {
   margin:0;
-  background:
-    radial-gradient(circle at top, #151515, #0b0b0b 60%);
+  background: radial-gradient(circle at top, #151515, #0b0b0b 60%);
   color:white;
   font-family:'Oswald',sans-serif;
   cursor:none;
 }
 
-/* GRID BACKGROUND */
+/* GRID */
 .grid-bg {
   position:fixed;
   width:100%;
   height:100%;
   z-index:-1;
-
   background:
     linear-gradient(rgba(198,164,108,0.18) 1px, transparent 1px),
     linear-gradient(90deg, rgba(198,164,108,0.18) 1px, transparent 1px);
-
   background-size:60px 60px;
   opacity:0.35;
-  animation:gridMove 25s linear infinite;
-}
-
-@keyframes gridMove {
-  from {background-position:0 0;}
-  to {background-position:60px 60px;}
 }
 
 /* CURSOR */
@@ -57,7 +48,7 @@ body {
   position:fixed;
   pointer-events:none;
   transform:translate(-50%,-50%);
-  transition:0.15s ease;
+  transition:0.12s ease;
   z-index:999;
 }
 
@@ -80,11 +71,12 @@ body {
   color:white;
 }
 
-/* CONTACT FIX */
+/* ✔ CONTACT FIX (original font + gold) */
 .contact a {
   color:var(--gold);
   font-size:22px;
   text-decoration:none;
+  font-family:'Oswald',sans-serif;
 }
 
 /* HERO */
@@ -134,27 +126,33 @@ body {
   margin:30px auto;
 }
 
-/* CARD */
+/* ✔ BASE CARD */
 .card {
   background:rgba(245,245,245,0.06);
   color:white;
   padding:20px;
   border-radius:16px;
-  border:1px solid rgba(255,255,255,0.10);
+  border:2px solid var(--gold);
   position:relative;
   overflow:hidden;
   transition:0.25s ease;
   backdrop-filter:blur(10px);
 }
 
+/* hover */
 .card:hover {
   transform:translateY(-6px);
-  border-color:rgba(198,164,108,0.4);
+  border-color:var(--red);
 }
 
-/* WHY CARDS BORDER */
-.section:nth-of-type(2) .card {
-  border:1px solid var(--gold);
+/* NUMBER */
+.number {
+  position:absolute;
+  top:-30px;
+  right:10px;
+  font-size:150px;
+  color:rgba(255,42,42,0.18);
+  font-family:'Bebas Neue';
 }
 
 /* SOLUTION */
@@ -184,24 +182,89 @@ body {
   text-align:center;
 }
 
-/* FORM FIX ONLY */
+/* FORM */
+#mlb2-41605663 {
+  max-width:520px;
+  margin:30px auto 0;
+}
+
+#mlb2-41605663 form {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  padding:24px;
+  border-radius:18px;
+  background:rgba(0,0,0,0.3);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.2);
+}
+
 #mlb2-41605663 input,
 .select-btn,
 #mlb2-41605663 button {
+  width:100%;
   height:60px;
+  border-radius:14px;
+  box-sizing:border-box;
 }
 
-/* FOOTER */
+/* input */
+#mlb2-41605663 input {
+  padding:0 18px;
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.2);
+  color:#777;
+}
+
+/* dropdown */
+.custom-select {
+  position:relative;
+}
+
+.select-btn {
+  background:#fff;
+  color:#777;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  cursor:pointer;
+}
+
+.options {
+  position:absolute;
+  top:65px;
+  left:0;
+  width:100%;
+  background:#fff;
+  border-radius:14px;
+  display:none;
+  z-index:10;
+}
+
+.option {
+  padding:14px 18px;
+  color:#111;
+}
+
+.option:hover {
+  background:#f2f2f2;
+}
+
+/* button */
+#mlb2-41605663 button {
+  background:linear-gradient(135deg, var(--black), #1a1a1a);
+  color:white;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* footer */
 .footer {
   text-align:center;
   padding:30px;
   opacity:0.7;
-}
-
-@media(max-width:768px){
-  .hero h1 {font-size:60px;}
-  .section h2 {font-size:40px;}
-  .grid {grid-template-columns:1fr;}
 }
 
 </style>
@@ -215,16 +278,14 @@ body {
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
-    <a href="https://www.facebook.com/kristina.radosavljevic" target="_blank">CONTACT</a>
+    <a href="#">CONTACT</a>
   </div>
 </div>
 
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
-  <p>
-    A modular system where every offer has its own landing page, and every click leads to a client.
-  </p>
-  <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
+  <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
+  <a href="#" class="cta">VIEW DEMO</a>
 </section>
 
 <section class="section">
@@ -239,9 +300,7 @@ body {
 <section class="section">
   <h2>THIS IS NOT A WEBSITE<br>THIS IS A SYSTEM</h2>
   <div class="solution">
-    <div>
-      Instead of one generic website, you get structured landing pages per offer.
-    </div>
+    <div>Instead of one generic website, you get structured landing pages per offer.</div>
     <div class="flow">Card → Landing → Form → Email → Client</div>
   </div>
 </section>
@@ -258,39 +317,33 @@ body {
   </div>
 </section>
 
+<!-- RESTORED USE CASES -->
 <section class="section">
   <h2>REAL USE CASES</h2>
   <div class="grid">
-    <div class="card" onclick="window.location.href='doberman.html'">
-      Dog Breeders (Doberman)
-    </div>
+    <div class="card">Dog Breeders (Doberman)</div>
     <div class="card">Service Businesses</div>
     <div class="card">Digital Products</div>
   </div>
 </section>
 
+<!-- RESTORED PACKAGES ORIGINAL SIZE -->
 <section class="section">
   <h2>SYSTEM PACKAGES</h2>
   <div class="grid">
     <div class="card">
       <div class="number">01</div>
-      <h3>Landing System</h3>
-      <p>1–3 landing pages</p>
-      <p><strong>€150–€400</strong></p>
+      Landing System
     </div>
 
     <div class="card">
       <div class="number">02</div>
-      <h3>Portal + Landing System</h3>
-      <p>Multi-page system</p>
-      <p><strong>€300–€800</strong></p>
+      Portal + Landing System
     </div>
 
     <div class="card">
       <div class="number">03</div>
-      <h3>Full Funnel System</h3>
-      <p>Automation + follow-up</p>
-      <p><strong>€500–€1200</strong></p>
+      Full Funnel System
     </div>
   </div>
 </section>
@@ -327,6 +380,21 @@ const cursor = document.querySelector('.cursor');
 document.addEventListener('mousemove', e=>{
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
+});
+
+/* dropdown restored */
+const btn = document.getElementById('selectBtn');
+const options = document.getElementById('options');
+
+btn.addEventListener('click', ()=>{
+  options.style.display = options.style.display === 'block' ? 'none' : 'block';
+});
+
+document.querySelectorAll('.option').forEach(opt=>{
+  opt.addEventListener('click', ()=>{
+    btn.textContent = opt.textContent;
+    options.style.display = 'none';
+  });
 });
 </script>
 
