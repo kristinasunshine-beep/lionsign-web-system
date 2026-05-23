@@ -20,7 +20,8 @@
 /* BODY */
 body {
   margin:0;
-  background: radial-gradient(circle at top, #151515, #0b0b0b 60%);
+  background:
+    radial-gradient(circle at top, #151515, #0b0b0b 60%);
   color:white;
   font-family:'Oswald',sans-serif;
   cursor:none;
@@ -79,7 +80,7 @@ body {
   color:white;
 }
 
-/* FIX CONTACT */
+/* CONTACT FIX */
 .contact a {
   color:var(--gold);
   font-size:22px;
@@ -156,6 +157,16 @@ body {
   border:1px solid var(--gold);
 }
 
+/* SOLUTION */
+.solution {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  max-width:1000px;
+  margin:auto;
+  font-size:20px;
+}
+
 /* FLOW */
 .flow {
   font-size:26px;
@@ -173,7 +184,7 @@ body {
   text-align:center;
 }
 
-/* FORM FIX (JEDINO BITNO) */
+/* FORM FIX ONLY */
 #mlb2-41605663 input,
 .select-btn,
 #mlb2-41605663 button {
@@ -249,7 +260,7 @@ body {
 
 <section class="section">
   <h2>REAL USE CASES</h2>
-  <div class="grid special">
+  <div class="grid">
     <div class="card" onclick="window.location.href='doberman.html'">
       Dog Breeders (Doberman)
     </div>
@@ -260,7 +271,7 @@ body {
 
 <section class="section">
   <h2>SYSTEM PACKAGES</h2>
-  <div class="grid special">
+  <div class="grid">
     <div class="card">
       <div class="number">01</div>
       <h3>Landing System</h3>
