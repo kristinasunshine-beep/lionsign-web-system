@@ -19,7 +19,8 @@
 
 body {
   margin:0;
-  background:radial-gradient(circle at top, #151515, #0b0b0b 60%);
+  background:
+    radial-gradient(circle at top, #151515, #0b0b0b 60%);
   color:white;
   font-family:'Oswald',sans-serif;
   cursor:none;
@@ -32,8 +33,8 @@ body {
   height:100%;
   z-index:-1;
   background:
-    linear-gradient(rgba(198,164,108,0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(198,164,108,0.22) 1px, transparent 1px);
+    linear-gradient(rgba(198,164,108,0.20) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(198,164,108,0.20) 1px, transparent 1px);
   background-size:60px 60px;
   opacity:0.4;
 }
@@ -47,6 +48,8 @@ body {
   position:fixed;
   pointer-events:none;
   transform:translate(-50%,-50%);
+  transition:0.15s ease;
+  z-index:999;
 }
 
 /* HEADER ORIGINAL */
@@ -126,10 +129,10 @@ body {
   color:white;
   padding:20px;
   border-radius:16px;
-  border:2px solid var(--gold); /* DODAT ZLATNI BORDER */
+  border:2px solid var(--gold); /* samo dodat border */
 }
 
-/* SYSTEM TEXT FIX */
+/* SYSTEM TEXT – isti tekst, samo 2 reda */
 .solution {
   max-width:800px;
   margin:auto;
@@ -138,7 +141,7 @@ body {
   line-height:1.6;
 }
 
-/* FORM ORIGINAL + FIX WIDTH */
+/* FORM – ORIGINAL + UNIFORM */
 #mlb2-41605663 {
   max-width:520px;
   margin:30px auto 0;
@@ -155,12 +158,60 @@ body {
   border:1px solid rgba(255,255,255,0.2);
 }
 
+/* 👉 KLJUČNO: uniformisana visina */
 #mlb2-41605663 input,
 .select-btn,
 #mlb2-41605663 button {
   width:100%;
   height:60px;
+  padding:0 18px;
   border-radius:14px;
+}
+
+/* ORIGINAL SELECT */
+.custom-select {
+  position:relative;
+  width:100%;
+}
+
+.select-btn {
+  background:#fff;
+  color:#777;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.options {
+  position:absolute;
+  top:65px;
+  left:0;
+  width:100%;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  display:none;
+  z-index:10;
+}
+
+.option {
+  padding:14px 18px;
+  cursor:pointer;
+  color:#111;
+}
+
+.option:hover {
+  background:#f2f2f2;
+}
+
+#mlb2-41605663 button {
+  background:linear-gradient(135deg, var(--black), #1a1a1a);
+  color:white;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
 }
 
 /* MOBILE */
@@ -254,13 +305,34 @@ body {
       <input type="email" placeholder="Your email" required>
 
       <div class="custom-select">
-        <div class="select-btn">Select package</div>
+        <div class="select-btn" id="selectBtn">Select package</div>
+        <div class="options" id="options">
+          <div class="option">Landing System</div>
+          <div class="option">Portal + Landing System</div>
+          <div class="option">Full Funnel System</div>
+        </div>
       </div>
 
       <button type="submit">START NOW</button>
     </form>
   </div>
 </section>
+
+<script>
+const btn = document.getElementById('selectBtn');
+const options = document.getElementById('options');
+
+btn.addEventListener('click', ()=>{
+  options.style.display = options.style.display === 'block' ? 'none' : 'block';
+});
+
+document.querySelectorAll('.option').forEach(opt=>{
+  opt.addEventListener('click', ()=>{
+    btn.textContent = opt.textContent;
+    options.style.display = 'none';
+  });
+});
+</script>
 
 </body>
 </html>
