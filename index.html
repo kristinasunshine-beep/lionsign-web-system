@@ -77,6 +77,10 @@ body {
   font-size:20px;
   text-decoration:none;
   font-family:'Oswald',sans-serif;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-shadow:0 0 8px rgba(198,164,108,0.4);
 }
 
 /* HERO */
@@ -299,12 +303,64 @@ body {
   letter-spacing:2px;
 }
 
-/* 🔥 DODATO SAMO OVO */
+/* FLOW */
 .flow {
   color:var(--gold);
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:1px;
+}
+
+/* FAQ */
+.faq-container {
+  max-width:800px;
+  margin:30px auto 0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.faq-item {
+  border:1px solid rgba(198,164,108,0.4);
+  border-radius:14px;
+  overflow:hidden;
+  background:rgba(0,0,0,0.3);
+  position:relative;
+}
+
+.faq-item::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(400px circle at 50% 0%, rgba(198,164,108,0.25), transparent 60%);
+  opacity:0;
+  transition:0.3s ease;
+}
+
+.faq-item:hover::before {
+  opacity:1;
+}
+
+.faq-question {
+  padding:18px 20px;
+  cursor:pointer;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+}
+
+.faq-answer {
+  max-height:0;
+  overflow:hidden;
+  padding:0 20px;
+  font-size:14px;
+  color:#ccc;
+  transition:0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height:200px;
+  padding:10px 20px 20px;
 }
 
 </style>
@@ -389,6 +445,40 @@ body {
   </div>
 </section>
 
+<!-- FAQ UBACEN -->
+<section class="section">
+  <h2>FREQUENTLY ASKED QUESTIONS</h2>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <div class="faq-question">Is this just a website or a full system?</div>
+      <div class="faq-answer">This is a structured client acquisition system where each offer has its own conversion path.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Why not just one website?</div>
+      <div class="faq-answer">Because generic websites dilute intent. This system isolates and converts.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How does it generate clients?</div>
+      <div class="faq-answer">Each click enters a guided conversion flow optimized for action.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can this adapt to my niche?</div>
+      <div class="faq-answer">Yes, fully modular across services, breeders, and digital products.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What happens after form submit?</div>
+      <div class="faq-answer">Lead capture + automated follow-up + client pipeline entry.</div>
+    </div>
+
+  </div>
+</section>
+
 <section class="cta-block">
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
 
@@ -448,6 +538,13 @@ document.querySelectorAll('.option').forEach(opt=>{
   opt.addEventListener('click', ()=>{
     btn.textContent = opt.textContent;
     options.style.display = 'none';
+  });
+});
+
+/* FAQ SCRIPT */
+document.querySelectorAll('.faq-question').forEach(q=>{
+  q.addEventListener('click', ()=>{
+    q.parentElement.classList.toggle('active');
   });
 });
 </script>
