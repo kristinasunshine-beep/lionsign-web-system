@@ -20,8 +20,7 @@
 /* BODY */
 body {
   margin:0;
-  background:
-    radial-gradient(circle at top, #151515, #0b0b0b 60%);
+  background: radial-gradient(circle at top, #151515, #0b0b0b 60%);
   color:white;
   font-family:'Oswald',sans-serif;
   cursor:none;
@@ -33,9 +32,11 @@ body {
   width:100%;
   height:100%;
   z-index:-1;
+
   background:
     linear-gradient(rgba(198,164,108,0.18) 1px, transparent 1px),
     linear-gradient(90deg, rgba(198,164,108,0.18) 1px, transparent 1px);
+
   background-size:60px 60px;
   opacity:0.35;
   animation:gridMove 25s linear infinite;
@@ -78,7 +79,7 @@ body {
   color:white;
 }
 
-/* CONTACT FIX */
+/* FIX CONTACT */
 .contact a {
   color:var(--gold);
   font-size:22px;
@@ -155,46 +156,6 @@ body {
   border:1px solid var(--gold);
 }
 
-/* PREMIUM GLOW */
-.special .card::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(
-    500px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255,42,42,0.35),
-    transparent 45%
-  );
-  opacity:0;
-  transition:opacity 0.15s ease;
-  pointer-events:none;
-}
-
-.special .card:hover::before,
-.special .card.active::before {
-  opacity:1;
-}
-
-/* NUMBER */
-.number {
-  position:absolute;
-  top:-30px;
-  right:10px;
-  font-size:150px;
-  color:rgba(255,42,42,0.20);
-  font-family:'Bebas Neue';
-}
-
-/* SOLUTION */
-.solution {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  max-width:1000px;
-  margin:auto;
-  font-size:20px;
-}
-
 /* FLOW */
 .flow {
   font-size:26px;
@@ -212,7 +173,7 @@ body {
   text-align:center;
 }
 
-/* FORM (uniform only) */
+/* FORM FIX (JEDINO BITNO) */
 #mlb2-41605663 input,
 .select-btn,
 #mlb2-41605663 button {
@@ -250,8 +211,7 @@ body {
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>
-    A modular system where every offer has its own landing page,<br>
-    and every click leads to a client.
+    A modular system where every offer has its own landing page, and every click leads to a client.
   </p>
   <a href="https://www.lionsignstudio.com" class="cta" target="_blank">VIEW DEMO</a>
 </section>
@@ -356,25 +316,6 @@ const cursor = document.querySelector('.cursor');
 document.addEventListener('mousemove', e=>{
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
-});
-
-/* cursor scale + glow */
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('mouseenter', ()=>{
-    cursor.classList.add('active');
-  });
-
-  card.addEventListener('mouseleave', ()=>{
-    cursor.classList.remove('active');
-  });
-
-  card.addEventListener('mousemove', (e)=>{
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--x', x + '%');
-    card.style.setProperty('--y', y + '%');
-  });
 });
 </script>
 
