@@ -143,20 +143,6 @@ body {
   border-color:var(--red);
 }
 
-/* RED GLOW */
-.special .card::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(500px circle at var(--x,50%) var(--y,50%), rgba(255,42,42,0.35), transparent 45%);
-  opacity:0;
-  transition:0.15s ease;
-}
-.special .card:hover::before,
-.special .card.active::before {
-  opacity:1;
-}
-
 /* NUMBER */
 .number {
   position:absolute;
@@ -254,7 +240,7 @@ body {
   color:rgba(160,160,160,0.9);
   font-size:28px;
   letter-spacing:2px;
-  margin-top:90px; /* POVEĆANO */
+  margin-top:90px;
 }
 
 /* FAQ */
@@ -277,19 +263,6 @@ body {
   cursor:pointer;
   display:flex;
   justify-content:space-between;
-  position:relative;
-}
-
-.faq-question::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle, rgba(198,164,108,0.35), transparent 60%);
-  opacity:0;
-  transition:0.3s;
-}
-.faq-question:hover::after {
-  opacity:1;
 }
 
 .faq-answer {
@@ -313,21 +286,13 @@ body {
 }
 
 .cta-block h2 {
-  margin-bottom:60px; /* POVEĆAN razmak ispod naslova */
-  text-align:center;  /* forsirano centriranje */
+  margin-bottom:60px;
+  text-align:center;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-
-  .hero h1 { font-size:64px; }
-  .section h2 { font-size:38px; }
-
-  .section:nth-of-type(5) .grid,
-  .section:nth-of-type(6) .grid {
-    grid-template-columns:1fr;
-  }
-
+/* SYSTEM PACKAGES */
+.section.system {
+  margin-top:40px;
 }
 
 </style>
@@ -341,14 +306,14 @@ body {
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
-    <a href="#contact">CONTACT</a>
+    <a href="https://facebook.com/YOUR_PROFILE" target="_blank">CONTACT</a>
   </div>
 </div>
 
 <section class="hero" id="demo">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
-  <a href="#demo" class="cta hover-target">VIEW DEMO</a>
+  <a href="https://lionsign.com" class="cta hover-target" target="_blank">VIEW DEMO</a>
 </section>
 
 <section class="section">
@@ -380,8 +345,8 @@ body {
 
 <section class="section">
   <h2>REAL USE CASES</h2>
-  <div class="grid special">
-    <a href="#dog-breeders" class="card hover-target" id="dog-breeders">
+  <div class="grid">
+    <a href="https://YOUR-SITE.com/dog-breeders" class="card hover-target" target="_blank">
       Dog Breeders (Doberman)
     </a>
     <div class="card">Service Businesses</div>
@@ -389,9 +354,9 @@ body {
   </div>
 </section>
 
-<section class="section">
+<section class="section system">
   <h2>SYSTEM PACKAGES</h2>
-  <div class="grid special">
+  <div class="grid">
     <div class="card">
       <div class="number">01</div>
       Landing System
@@ -415,24 +380,18 @@ body {
   <div class="faq">
 
     <div class="faq-item">
-      <div class="faq-question hover-target">Is this just a website or a system?</div>
-      <div class="faq-answer">
-        This is not a normal website. It is a structured conversion system where every offer has its own landing page designed to turn visitors into clients instead of just showing information.
-      </div>
+      <div class="faq-question">Is this just a website or a system?</div>
+      <div class="faq-answer">This is not a normal website. It is a structured conversion system.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-question hover-target">How does this generate clients?</div>
-      <div class="faq-answer">
-        Every click enters a controlled funnel: landing page → focused offer → form submission → lead capture.
-      </div>
+      <div class="faq-question">How does this generate clients?</div>
+      <div class="faq-answer">Through structured funnel flow: landing → form → email → client.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-question hover-target">Can this work for my niche?</div>
-      <div class="faq-answer">
-        Yes. The system is modular and works for any business.
-      </div>
+      <div class="faq-question">Can this work for my niche?</div>
+      <div class="faq-answer">Yes. It is modular and adaptable to any business.</div>
     </div>
 
   </div>
@@ -468,7 +427,6 @@ body {
 
 <script>
 
-/* CURSOR */
 const cursor = document.querySelector('.cursor');
 
 document.addEventListener('mousemove', e=>{
@@ -476,35 +434,11 @@ document.addEventListener('mousemove', e=>{
   cursor.style.top = e.clientY + 'px';
 });
 
-document.addEventListener('touchmove', e=>{
-  const t = e.touches[0];
-  cursor.style.left = t.clientX + 'px';
-  cursor.style.top = t.clientY + 'px';
-});
-
-/* HOVER */
-document.querySelectorAll('.hover-target, .special .card').forEach(el=>{
+document.querySelectorAll('.hover-target, .card').forEach(el=>{
   el.addEventListener('mouseenter', ()=> cursor.classList.add('active'));
   el.addEventListener('mouseleave', ()=> cursor.classList.remove('active'));
 });
 
-/* CARD GLOW */
-document.querySelectorAll('.special .card').forEach(card=>{
-  card.addEventListener('mousemove', (e)=>{
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--x', x + '%');
-    card.style.setProperty('--y', y + '%');
-    card.classList.add('active');
-  });
-
-  card.addEventListener('mouseleave', ()=>{
-    card.classList.remove('active');
-  });
-});
-
-/* DROPDOWN */
 const btn = document.querySelector('.select-btn');
 const options = document.querySelector('.options');
 
@@ -519,7 +453,6 @@ document.querySelectorAll('.option').forEach(opt=>{
   });
 });
 
-/* FAQ */
 document.querySelectorAll('.faq-question').forEach(q=>{
   q.addEventListener('click', ()=>{
     q.parentElement.classList.toggle('active');
