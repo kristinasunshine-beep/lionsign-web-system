@@ -143,6 +143,20 @@ body {
   border-color:var(--red);
 }
 
+/* RED GLOW */
+.special .card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(500px circle at var(--x,50%) var(--y,50%), rgba(255,42,42,0.35), transparent 45%);
+  opacity:0;
+  transition:0.15s ease;
+}
+.special .card:hover::before,
+.special .card.active::before {
+  opacity:1;
+}
+
 /* NUMBER */
 .number {
   position:absolute;
@@ -263,6 +277,19 @@ body {
   cursor:pointer;
   display:flex;
   justify-content:space-between;
+  position:relative;
+}
+
+.faq-question::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle, rgba(198,164,108,0.35), transparent 60%);
+  opacity:0;
+  transition:0.3s;
+}
+.faq-question:hover::after {
+  opacity:1;
 }
 
 .faq-answer {
@@ -290,9 +317,17 @@ body {
   text-align:center;
 }
 
-/* SYSTEM PACKAGES */
-.section.system {
-  margin-top:40px;
+/* MOBILE */
+@media(max-width:768px){
+
+  .hero h1 { font-size:64px; }
+  .section h2 { font-size:38px; }
+
+  .section:nth-of-type(5) .grid,
+  .section:nth-of-type(6) .grid {
+    grid-template-columns:1fr;
+  }
+
 }
 
 </style>
@@ -306,14 +341,14 @@ body {
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
-    <a href="https://facebook.com/YOUR_PROFILE" target="_blank">CONTACT</a>
+    <a href="https://www.facebook.com/kristina.radosavljevic" target="_blank">CONTACT</a>
   </div>
 </div>
 
 <section class="hero" id="demo">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
-  <a href="https://lionsign.com" class="cta hover-target" target="_blank">VIEW DEMO</a>
+  <a href="https://lionsignstudio.com" class="cta hover-target">VIEW DEMO</a>
 </section>
 
 <section class="section">
@@ -345,8 +380,8 @@ body {
 
 <section class="section">
   <h2>REAL USE CASES</h2>
-  <div class="grid">
-    <a href="https://YOUR-SITE.com/dog-breeders" class="card hover-target" target="_blank">
+  <div class="grid special">
+    <a href="doberman-breeding-system.html" class="card hover-target" id="dog-breeders">
       Dog Breeders (Doberman)
     </a>
     <div class="card">Service Businesses</div>
@@ -354,9 +389,9 @@ body {
   </div>
 </section>
 
-<section class="section system">
+<section class="section">
   <h2>SYSTEM PACKAGES</h2>
-  <div class="grid">
+  <div class="grid special">
     <div class="card">
       <div class="number">01</div>
       Landing System
@@ -378,27 +413,30 @@ body {
 <section class="section">
   <h2>FREQUENTLY ASKED QUESTIONS</h2>
   <div class="faq">
-
     <div class="faq-item">
-      <div class="faq-question">Is this just a website or a system?</div>
-      <div class="faq-answer">This is not a normal website. It is a structured conversion system.</div>
+      <div class="faq-question hover-target">Is this just a website or a system?</div>
+      <div class="faq-answer">
+        This is not a normal website. It is a structured conversion system where every offer has its own landing page designed to turn visitors into clients instead of just showing information.
+      </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-question">How does this generate clients?</div>
-      <div class="faq-answer">Through structured funnel flow: landing → form → email → client.</div>
+      <div class="faq-question hover-target">How does this generate clients?</div>
+      <div class="faq-answer">
+        Every click enters a controlled funnel: landing page → focused offer → form submission → lead capture.
+      </div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-question">Can this work for my niche?</div>
-      <div class="faq-answer">Yes. It is modular and adaptable to any business.</div>
+      <div class="faq-question hover-target">Can this work for my niche?</div>
+      <div class="faq-answer">
+        Yes. The system is modular and works for any business.
+      </div>
     </div>
-
   </div>
 </section>
 
 <section class="cta-block" id="contact">
-
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
 
   <div id="mlb2-41605663">
@@ -418,7 +456,6 @@ body {
       <button type="submit" class="hover-target">START NOW</button>
     </form>
   </div>
-
 </section>
 
 <div class="footer">
@@ -426,7 +463,6 @@ body {
 </div>
 
 <script>
-
 const cursor = document.querySelector('.cursor');
 
 document.addEventListener('mousemove', e=>{
@@ -434,9 +470,30 @@ document.addEventListener('mousemove', e=>{
   cursor.style.top = e.clientY + 'px';
 });
 
-document.querySelectorAll('.hover-target, .card').forEach(el=>{
+document.addEventListener('touchmove', e=>{
+  const t = e.touches[0];
+  cursor.style.left = t.clientX + 'px';
+  cursor.style.top = t.clientY + 'px';
+});
+
+document.querySelectorAll('.hover-target, .special .card').forEach(el=>{
   el.addEventListener('mouseenter', ()=> cursor.classList.add('active'));
   el.addEventListener('mouseleave', ()=> cursor.classList.remove('active'));
+});
+
+document.querySelectorAll('.special .card').forEach(card=>{
+  card.addEventListener('mousemove', (e)=>{
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--x', x + '%');
+    card.style.setProperty('--y', y + '%');
+    card.classList.add('active');
+  });
+
+  card.addEventListener('mouseleave', ()=>{
+    card.classList.remove('active');
+  });
 });
 
 const btn = document.querySelector('.select-btn');
@@ -458,7 +515,6 @@ document.querySelectorAll('.faq-question').forEach(q=>{
     q.parentElement.classList.toggle('active');
   });
 });
-
 </script>
 
 </body>
