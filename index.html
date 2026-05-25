@@ -138,7 +138,7 @@ body {
   display:block;
 }
 
-/* GOLD GLOW FIX */
+/* GOLD GLOW */
 .section:nth-of-type(1) .card,
 .section:nth-of-type(3) .card {
   border:1px solid rgba(198,164,108,0.45);
@@ -195,85 +195,6 @@ body {
   margin-top:10px;
 }
 
-/* FORM */
-#mlb2-41605663 {
-  max-width:520px;
-  margin:20px auto 0;
-}
-
-#mlb2-41605663 input,
-.select-btn,
-#mlb2-41605663 button {
-  width:100%;
-  height:58px;
-  border-radius:14px;
-  box-sizing:border-box;
-  font-family:'Oswald',sans-serif;
-  font-size:15px;
-  padding:0 18px;
-}
-
-.custom-select { position:relative; }
-
-.select-btn {
-  background:#fff;
-  color:#777;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-  text-transform:uppercase;
-}
-
-.options {
-  position:absolute;
-  top:65px;
-  left:0;
-  width:100%;
-  background:#fff;
-  border-radius:14px;
-  display:none;
-  z-index:10;
-}
-
-.option {
-  padding:14px 18px;
-  color:#111;
-}
-
-.option:hover {
-  background:#f2f2f2;
-}
-
-#mlb2-41605663 button {
-  background:linear-gradient(135deg, var(--black), #1a1a1a);
-  color:white;
-  border:none;
-  font-weight:700;
-  text-transform:uppercase;
-}
-
-/* GOLD WRAPPER */
-.gold-wrapper {
-  border:2px solid var(--gold);
-  border-radius:18px;
-  padding:25px;
-  max-width:560px;
-  margin:0 auto;
-  box-shadow:0 0 25px rgba(198,164,108,0.15);
-}
-
-/* FOOTER */
-.footer {
-  text-align:center;
-  padding:20px;
-  font-weight:900;
-  color:rgba(160,160,160,0.9);
-  font-size:28px;
-  letter-spacing:2px;
-  margin-top:90px;
-}
-
 /* FAQ */
 .faq {
   max-width:900px;
@@ -323,27 +244,40 @@ body {
   padding:10px 18px 18px;
 }
 
-/* CTA BLOCK */
+/* FORM + CTA */
 .cta-block {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   text-align:center;
   padding:70px 20px;
 }
 
 .cta-block h2 {
   margin-bottom:60px;
+  text-align:center;
+  width:100%;
 }
 
-/* MOBILE */
-@media(max-width:768px){
+/* GOLD WRAPPER */
+.gold-wrapper {
+  border:2px solid var(--gold);
+  border-radius:18px;
+  padding:25px;
+  max-width:560px;
+  margin:0 auto;
+  box-shadow:0 0 25px rgba(198,164,108,0.15);
+}
 
-  .hero h1 { font-size:64px; }
-  .section h2 { font-size:38px; }
-
-  .section:nth-of-type(5) .grid,
-  .section:nth-of-type(6) .grid {
-    grid-template-columns:1fr;
-  }
-
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:20px;
+  font-weight:900;
+  color:rgba(160,160,160,0.9);
+  font-size:28px;
+  letter-spacing:2px;
+  margin-top:90px;
 }
 
 </style>
@@ -357,14 +291,14 @@ body {
 <div class="header">
   <div class="logo">LIONSIGN</div>
   <div class="contact">
-    <a href="https://www.facebook.com/kristina.radosavljevic" target="_blank" class="hover-target">CONTACT</a>
+    <a href="#" class="hover-target">CONTACT</a>
   </div>
 </div>
 
 <section class="hero">
   <h1>WEB SYSTEM FOR CLIENT GENERATION</h1>
   <p>A modular system where every offer has its own landing page, and every click leads to a client.</p>
-  <a href="https://www.lionsignstudio.com" class="cta hover-target">VIEW DEMO</a>
+  <a href="#" class="cta hover-target">VIEW DEMO</a>
 </section>
 
 <section class="section">
@@ -404,24 +338,41 @@ body {
 </section>
 
 <section class="section">
+  <h2>SYSTEM PACKAGES</h2>
+  <div class="grid special">
+    <div class="card">
+      <div class="number">01</div>
+      Landing System
+      <div class="price-row">€150–€400</div>
+    </div>
+    <div class="card">
+      <div class="number">02</div>
+      Portal + Landing System
+      <div class="price-row">€300–€800</div>
+    </div>
+    <div class="card">
+      <div class="number">03</div>
+      Full Funnel System
+      <div class="price-row">€500–€1200</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <h2>FREQUENTLY ASKED QUESTIONS</h2>
   <div class="faq">
-
     <div class="faq-item">
       <div class="faq-question hover-target">Is this just a website or a system?</div>
       <div class="faq-answer">This is not a normal website...</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-question hover-target">How does this generate clients?</div>
-      <div class="faq-answer">Every click enters a controlled funnel...</div>
+      <div class="faq-answer">Every click enters a funnel...</div>
     </div>
-
     <div class="faq-item">
       <div class="faq-question hover-target">Can this work for my niche?</div>
       <div class="faq-answer">Yes. The system is modular...</div>
     </div>
-
   </div>
 </section>
 
@@ -429,75 +380,16 @@ body {
   <h2>BUILD YOUR CLIENT GENERATION SYSTEM</h2>
 
   <div class="gold-wrapper">
-
-    <div id="mlb2-41605663">
-      <form>
-        <input type="email" placeholder="YOUR EMAIL" required>
-
-        <div class="custom-select">
-          <div class="select-btn">Select package</div>
-
-          <div class="options">
-            <div class="option">Landing System</div>
-            <div class="option">Portal + Landing System</div>
-            <div class="option">Full Funnel System</div>
-          </div>
-        </div>
-
-        <button type="submit" class="hover-target">START NOW</button>
-      </form>
-    </div>
-
+    <form>
+      <input type="email" placeholder="YOUR EMAIL" required>
+      <button type="submit" class="hover-target">START NOW</button>
+    </form>
   </div>
 </section>
 
 <div class="footer">
   DESIGN BUILDS DOMINANCE
 </div>
-
-<script>
-const cursor = document.querySelector('.cursor');
-
-document.addEventListener('mousemove', e=>{
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-
-document.addEventListener('touchmove', e=>{
-  const t = e.touches[0];
-  cursor.style.left = t.clientX + 'px';
-  cursor.style.top = t.clientY + 'px';
-});
-
-document.querySelectorAll('.hover-target, .special .card').forEach(el=>{
-  el.addEventListener('mouseenter', ()=> cursor.classList.add('active'));
-  el.addEventListener('mouseleave', ()=> cursor.classList.remove('active'));
-  el.addEventListener('touchstart', ()=> cursor.classList.add('active'));
-  el.addEventListener('touchend', ()=> cursor.classList.remove('active'));
-});
-
-/* dropdown */
-const btn = document.querySelector('.select-btn');
-const options = document.querySelector('.options');
-
-btn.addEventListener('click', ()=>{
-  options.style.display = options.style.display === 'block' ? 'none' : 'block';
-});
-
-document.querySelectorAll('.option').forEach(opt=>{
-  opt.addEventListener('click', ()=>{
-    btn.textContent = opt.textContent;
-    options.style.display = 'none';
-  });
-});
-
-/* faq */
-document.querySelectorAll('.faq-question').forEach(q=>{
-  q.addEventListener('click', ()=>{
-    q.parentElement.classList.toggle('active');
-  });
-});
-</script>
 
 </body>
 </html>
